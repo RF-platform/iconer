@@ -1,0 +1,1146 @@
+[{
+    "code": "irebu01",
+    "upgrade": "70000000",
+    "count": 1
+  },
+    {
+      "code": "irere01",
+      "upgrade": "700000ff",
+      "count": 1
+    },
+    {
+      "code": "irebu01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iregr01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "ireyl01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "irepu01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "irewh01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "irebw01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "ireol01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "irena01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "irchr01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "irchr02",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "irval01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "ircza02",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "irczb02",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "irczc02",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "irczd02",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "ircza03",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "irczb03",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "irczc03",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "irczd03",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "irres01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "ircsa05",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwbza00",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwfza00",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwdza00",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwtza00",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwlza00",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwaza00",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwgza00",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwkaa01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwjaa01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwsaa01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwxaa01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwmaa01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwpaa01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwbaa01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwfaa01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwdaa01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwtaa01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwlaa01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwaaa01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwgaa01",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwkaa11",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwjaa11",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwsaa11",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwxaa11",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwmaa11",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwpaa11",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwbaa11",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwfaa11",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwdaa11",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwtaa11",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwlaa11",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwaaa11",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwgaa11",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwkaa21",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwjaa21",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwsaa21",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwxaa21",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwmaa21",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwpaa21",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwbaa21",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwfaa21",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwdaa21",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwtaa21",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwlaa21",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwaaa21",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwgaa21",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwkaa31",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwjaa31",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwsaa31",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwxaa31",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwmaa31",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwpaa31",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwbaa31",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwfaa31",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwdaa31",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwtaa31",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwlaa31",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwaaa31",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwgaa31",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwkaa41",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwjaa41",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwsaa41",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwxaa41",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwmaa41",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwpaa41",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwbaa41",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwfaa41",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwdaa41",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwtaa41",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwlaa41",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwaaa41",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwgaa41",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwkaa51",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwjaa51",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwsaa51",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwxaa51",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwmaa51",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwpaa51",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwbaa51",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwfaa51",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwdaa51",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwtaa51",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwlaa51",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwaaa51",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwgaa51",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwkaa02",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwjaa02",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwsaa02",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwxaa02",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwmaa02",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwpaa02",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwbaa02",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwfaa02",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwdaa02",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwtaa02",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwlaa02",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwaaa02",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwgaa02",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwkaa12",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwjaa12",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwsaa12",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwxaa12",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwmaa12",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwpaa12",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwbaa12",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwfaa12",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwdaa12",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwtaa12",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwlaa12",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwaaa12",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwgaa12",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwkaa22",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwjaa22",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwsaa22",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwxaa22",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwmaa22",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwpaa22",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwbaa22",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwfaa22",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwdaa22",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwtaa22",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwlaa22",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwaaa22",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwgaa22",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwkaa32",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwjaa32",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwsaa32",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwxaa32",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwmaa32",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwpaa32",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwbaa32",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwfaa32",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwdaa32",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwtaa32",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwlaa32",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwaaa32",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwgaa32",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwkaa42",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwjaa42",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwsaa42",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwxaa42",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwmaa42",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwpaa42",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwbaa42",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwfaa42",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwdaa42",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwtaa42",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwlaa42",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwaaa42",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwgaa42",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwkaa52",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwjaa52",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwsaa52",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwxaa52",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwmaa52",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwpaa52",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwbaa52",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwfaa52",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwdaa52",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwtaa52",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwlaa52",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwaaa52",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwgaa52",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwkaa03",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwjaa03",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwsaa03",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwxaa03",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwmaa03",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwpaa03",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwbaa03",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwfaa03",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwdaa03",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwtaa03",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwlaa03",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwaaa03",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwgaa03",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwkaa13",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwjaa13",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwsaa13",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwxaa13",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwmaa13",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwpaa13",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwbaa13",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwfaa13",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwdaa13",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwtaa13",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwlaa13",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwaaa13",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwgaa13",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwkaa23",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwjaa23",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwsaa23",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwxaa23",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwmaa23",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwpaa23",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwbaa23",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwfaa23",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwdaa23",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwtaa23",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwlaa23",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwaaa23",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwgaa23",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwkaa33",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwjaa33",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwsaa33",
+      "upgrade": "70000000",
+      "count": 1
+    },
+    {
+      "code": "iwxaa33",
+      "upgrade": "70000000",
+      "count": 1
+    }
+]
