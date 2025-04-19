@@ -441,11 +441,16 @@ const App = () => {
   const fetchItemData = async () => {
     try {
       console.log('Making request to:', apiUrl);
-      const response = await axios.post(apiUrl, {}, {
+      const response = await axios.post(apiUrl, {
+        // Добавляем тело запроса, если API его требует
+        // Например, если API ожидает какие-то параметры
+      }, {
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        withCredentials: true
       });
       console.log('Response status:', response.status);
       console.log('Response headers:', response.headers);
