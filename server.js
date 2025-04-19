@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+const axios = require('axios');
 const app = express();
 
 // Configure CORS
@@ -10,6 +11,28 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+// API Proxy
+app.use('/api', async (req, res) => {
+  try {
+    const response = await axios({
+      method: req.method,
+      url: `https://db.arcanum.rf-platform.online${req.url}`,
+      data: req.body,
+      headers: {
+        ...req.headers,
+        host: 'db.arcanum.rf-platform.online'
+      },
+      withCredentials: true
+    });
+    res.status(response.status).json(response.data);
+  } catch (error) {
+    res.status(error.response?.status || 500).json({
+      message: error.message,
+      error: error.response?.data
+    });
+  }
+});
 
 // Serve static files from the dist directory
 app.use(express.static(path.join(__dirname, 'dist')));
