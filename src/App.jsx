@@ -40,7 +40,7 @@ const ItemDescription = ({ itemData }) => {
   );
 };
 
-const apiUrl = "/api/items";
+const apiUrl = "/items";
 
 const attackMultipliers = {
   1: 25,   
