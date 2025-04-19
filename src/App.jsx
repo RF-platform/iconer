@@ -18,7 +18,6 @@ import testJson from './test.json'
 
 // Настройка axios для CORS
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = '/api';
 
 const ItemDescription = ({ itemData }) => {
   const convertHtml = (text) => {
@@ -40,7 +39,7 @@ const ItemDescription = ({ itemData }) => {
   );
 };
 
-const apiUrl = "/api/items";
+const apiUrl = "/items";
 
 const attackMultipliers = {
   1: 25,   
