@@ -18,7 +18,7 @@ import testJson from './test.json'
 
 // Настройка axios для CORS
 axios.defaults.withCredentials = true;
-axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+axios.defaults.baseURL = '/api';
 
 const ItemDescription = ({ itemData }) => {
   const convertHtml = (text) => {
