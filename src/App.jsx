@@ -40,7 +40,7 @@ const ItemDescription = ({ itemData }) => {
   );
 };
 
-const apiUrl = "https://db.arcanum.rf-platform.online/api/items";
+const apiUrl = "/api/items";
 
 const attackMultipliers = {
   1: 25,   
