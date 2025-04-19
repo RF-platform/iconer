@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   preview: {
     port: 8080,
-    host: true
+    host: true,
+    allowedHosts: ['iconer.rf-platform.online']
   }
 });
