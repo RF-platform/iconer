@@ -440,15 +440,23 @@ const App = () => {
 
   const fetchItemData = async () => {
     try {
-      const response = await axios.get(apiUrl, {
+      console.log('Making request to:', apiUrl);
+      const response = await axios.post(apiUrl, {}, {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         }
       });
+      console.log('Response status:', response.status);
+      console.log('Response headers:', response.headers);
       setItemData(response.data);
     } catch (error) {
       console.error('Error fetching item data:', error);
+      console.error('Error details:', {
+        status: error.response?.status,
+        data: error.response?.data,
+        headers: error.response?.headers
+      });
       // Используем тестовые данные в случае ошибки
       setItemData(testJson);
     }
