@@ -18,7 +18,8 @@ app.use(cors({
 // API Proxy
 app.use('/api', async (req, res) => {
   try {
-    const targetUrl = `https://db.arcanum.rf-platform.online${req.url}`;
+    const url = req.url.replace('/items', '/itmes');
+    const targetUrl = `https://db.arcanum.rf-platform.online${url}`;
     console.log('Proxying request to:', targetUrl);
     
     const response = await axios({
