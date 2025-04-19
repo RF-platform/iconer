@@ -14,23 +14,26 @@ import Glory_Talic from "./assets/Glory_Talic.png";
 import Grace_Talic from "./assets/Grace_Talic.png";
 import Mercy_Talic from "./assets/Mercy_Talic.png";
 import Empty_Talic from "./assets/Empty_Talic.png";
-import testJson from './test.json'
+import testJson from "./test.json";
 
 // Настройка axios для CORS
 axios.defaults.withCredentials = true;
 
 const ItemDescription = ({ itemData }) => {
   const convertHtml = (text) => {
-    text = text.replace(/<#([a-fA-F0-9]{3,6})\s([^>]+)>/g, '<span style="color: #$1;">$2</span>');
+    text = text.replace(
+      /<#([a-fA-F0-9]{3,6})\s([^>]+)>/g,
+      '<span style="color: #$1;">$2</span>'
+    );
     text = text.replace(/<#([a-fA-F0-9]{3,6})>/g, '<span style="color: #$1;">');
     return text;
   };
 
-  const description = convertHtml(itemData.Desc || '');
+  const description = convertHtml(itemData.Desc || "");
 
   return (
     <div className="mt-4">
-  <span className="text-sm text-sky-200">[Description]</span>
+      <span className="text-sm text-sky-200">[Description]</span>
       <p
         className="text-sm max-w-[270px] text-[#C0C2C4]"
         dangerouslySetInnerHTML={{ __html: description }}
@@ -42,26 +45,26 @@ const ItemDescription = ({ itemData }) => {
 const apiUrl = "/items";
 
 const attackMultipliers = {
-  1: 25,   
-  2: 50,   
-  3: 75,   
+  1: 25,
+  2: 50,
+  3: 75,
   4: 100,
-  5: 150,  
-  6: 200,  
-  7: 250,  
+  5: 150,
+  6: 200,
+  7: 250,
 };
 
 const defenseMultipliers = {
-  1: 10,   
-  2: 20,   
-  3: 30,   
-  4: 40,   
-  5: 60,   
-  6: 90,   
-  7: 120,  
+  1: 10,
+  2: 20,
+  3: 30,
+  4: 40,
+  5: 60,
+  6: 90,
+  7: 120,
 };
 
-const GameItemCard = ({itemData }) => {
+const GameItemCard = ({ itemData }) => {
   const [colors, setColors] = useState({
     borderColor: "border-white",
     textColor: "text-white",
@@ -145,23 +148,29 @@ const GameItemCard = ({itemData }) => {
     {
       id: "attack",
       label: "Attack",
-      value: (item) => getUpgradedValueAndColor(item.GAMinAF, item.GAMaxAF, "attack").value,
-      color: (item) => getUpgradedValueAndColor(item.GAMinAF, item.GAMaxAF, "attack").color,
-    },    
+      value: (item) =>
+        getUpgradedValueAndColor(item.GAMinAF, item.GAMaxAF, "attack").value,
+      color: (item) =>
+        getUpgradedValueAndColor(item.GAMinAF, item.GAMaxAF, "attack").color,
+    },
     {
       id: "force",
       label: "Force",
-      value: (item) => getUpgradedValueAndColor(item.MAMinAF, item.MAMaxAF, "force").value,
-      color: (item) => getUpgradedValueAndColor(item.MAMinAF, item.MAMaxAF, "force").color,
+      value: (item) =>
+        getUpgradedValueAndColor(item.MAMinAF, item.MAMaxAF, "force").value,
+      color: (item) =>
+        getUpgradedValueAndColor(item.MAMinAF, item.MAMaxAF, "force").color,
     },
-    
+
     {
       id: "defense",
       label: "Defense",
-      value: (item) => getUpgradedSingleValueAndColor(item.DefFc, "defense").value,
-      color: (item) => getUpgradedSingleValueAndColor(item.DefFc, "defense").color,
+      value: (item) =>
+        getUpgradedSingleValueAndColor(item.DefFc, "defense").value,
+      color: (item) =>
+        getUpgradedSingleValueAndColor(item.DefFc, "defense").color,
     },
-    
+
     {
       id: "elements",
       label: "Elements",
@@ -191,33 +200,35 @@ const GameItemCard = ({itemData }) => {
   function applyMultiplier(value, multiplier) {
     const [min, max] = value.split(" - ").map(Number);
     if (isNaN(min) || isNaN(max)) return value;
-    return `${Math.floor(min * (1 + multiplier))} - ${Math.floor(max * (1 + multiplier))}`;
+    return `${Math.floor(min * (1 + multiplier))} - ${Math.floor(
+      max * (1 + multiplier)
+    )}`;
   }
 
   function getUpgradedSingleValueAndColor(value, type) {
     if (value == null || value === 0) return { value: null, color: null };
-  
+
     const multiplier = getUpgradeMultiplier(currentUpgrade, type);
     const upgraded = Math.floor(value * multiplier);
     const changed = upgraded !== value;
-  console.log('multiplier',multiplier)
+    console.log("multiplier", multiplier);
     return {
       value: upgraded,
-      color: changed ? "text-green-500" : "text-white"
+      color: changed ? "text-green-500" : "text-white",
     };
   }
-  
+
   const getUpgradeMultiplier = (code, type) => {
     const section = code.slice(0, 8);
     let zeroCount = 0;
     for (let i = 1; i < section.length; i++) {
-        if (section[i] === "0") zeroCount++;
-        else break;
+      if (section[i] === "0") zeroCount++;
+      else break;
     }
     const base = type === "defense" ? defenseMultipliers : attackMultipliers;
     return (base[zeroCount] || 0) / 100 + 1;
-};
-  
+  };
+
   function getUpgradedValueAndColor(min, max, type) {
     if (min == null || max == null) {
       return { value: null, color: null };
@@ -226,20 +237,20 @@ const GameItemCard = ({itemData }) => {
     const multiplier = getUpgradeMultiplier(currentUpgrade, type);
     const upgraded = applyMultiplier(base, multiplier);
     const changed = upgraded !== base;
-  
+
     if (min === 0 && max === 0) {
       return {
         value: base,
-        color: "text-white", 
+        color: "text-white",
       };
     }
-  
+
     return {
       value: upgraded,
-      color: changed ? "text-green-500" : "text-white", 
+      color: changed ? "text-green-500" : "text-white",
     };
   }
-  
+
   const spriteImage = itemData.SpriteFileName
     ? `src/assets/${itemData.SpriteFileName}`
     : "src/assets/default.webp";
@@ -329,48 +340,44 @@ const GameItemCard = ({itemData }) => {
                 <div className="space-y-1">
                   {filteredFields.map((field) => (
                     <p key={field.id} className="flex gap-3">
-                    <span className="text-sky-200 w-[100px] text-end text-sm">
-                      {field.label}
-                    </span>
-                    {(() => {
-  const value =
-    typeof field.value === "function"
-      ? field.value(itemData)
-      : itemData[field.value];
+                      <span className="text-sky-200 w-[100px] text-end text-sm">
+                        {field.label}
+                      </span>
+                      {(() => {
+                        const value =
+                          typeof field.value === "function"
+                            ? field.value(itemData)
+                            : itemData[field.value];
 
-  const color =
-    typeof field.color === "function"
-      ? field.color(itemData)
-      : field.color;
+                        const color =
+                          typeof field.color === "function"
+                            ? field.color(itemData)
+                            : field.color;
 
-  return (
-    <span className={`${color} text-sm`}>
-      {value}
-    </span>
-  );
-})()}
-
-                  </p>
-                  
+                        return (
+                          <span className={`${color} text-sm`}>{value}</span>
+                        );
+                      })()}
+                    </p>
                   ))}
                 </div>
               </div>
 
-              {itemData.EffectDescriptions && itemData.EffectDescriptions.length > 0 && (
-  <div className="flex gap-3 mt-1 items-">
-    <p className="text-sm w-[100px] text-end text-sky-200">
-      Special Effects
-    </p>
-    <div className="flex flex-col">
-      {itemData.EffectDescriptions.map((effect, index) => (
-        <p key={index} className="text-sm max-w-[210px]">
-          {effect}
-        </p>
-      ))}
-    </div>
-  </div>
-)}
-
+              {itemData.EffectDescriptions &&
+                itemData.EffectDescriptions.length > 0 && (
+                  <div className="flex gap-3 mt-1 items-">
+                    <p className="text-sm w-[100px] text-end text-sky-200">
+                      Special Effects
+                    </p>
+                    <div className="flex flex-col">
+                      {itemData.EffectDescriptions.map((effect, index) => (
+                        <p key={index} className="text-sm max-w-[210px]">
+                          {effect}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
               {itemData.UpgradeMaxCount > 0 && (
                 <div className="flex gap-3 mt-1 items-">
@@ -410,7 +417,13 @@ const GameItemCard = ({itemData }) => {
                 <span className="text-sm w-[100px] text-end text-sky-200">
                   Trade
                 </span>
-                <span className={`text-sm ${itemData.IsExchange === 1 ?  'text-green-500' : 'text-red-500'}`}>
+                <span
+                  className={`text-sm ${
+                    itemData.IsExchange === 1
+                      ? "text-green-500"
+                      : "text-red-500"
+                  }`}
+                >
                   {itemData.IsExchange === 1 ? "Possibility" : "Impossible"}
                 </span>
               </div>
@@ -435,39 +448,44 @@ const GameItemCard = ({itemData }) => {
 };
 
 const App = () => {
-  const [itemData, setItemData] = useState(null);
+  const [itemData, setItemData] = useState(null); // huy
 
   const fetchItemData = async () => {
     try {
-      console.log('Making request to:', apiUrl);
-      const response = await axios.post(apiUrl, {}, {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
+      console.log("Making request to:", apiUrl);
+      const response = await axios.post(
+        apiUrl,
+        { list: testJson },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
         }
-      });
-      console.log('Response status:', response.status);
-      console.log('Response headers:', response.headers);
+      );
+      console.log("Response status:", response);
+      console.log("Response headers:", response.headers);
+      console.log("response", response);
       setItemData(response.data);
     } catch (error) {
-      console.error('Error fetching item data:', error);
-      console.error('Error details:', {
+      console.error("Error fetching item data:", error);
+      console.error("Error details:", {
         status: error.response?.status,
         data: error.response?.data,
-        headers: error.response?.headers
+        headers: error.response?.headers,
       });
-      // Используем тестовые данные в случае ошибки
-      setItemData(testJson);
     }
   };
 
   useEffect(() => {
-    fetchItemData()
-  },[])
-  console.log('huy', itemData)
+    fetchItemData();
+  }, []);
+
+  console.log("huy", itemData);
+
   return (
     <div className="container mx-auto p-4">
- {itemData && itemData.length > 0 ? (
+      {itemData && itemData.length > 0 ? (
         <div className="flex flex-wrap gap-4">
           {itemData.map((item, key) => (
             <GameItemCard itemData={item} key={key} />
