@@ -366,7 +366,7 @@ const GameItemCard = ({ itemData, lang }) => {
           {/* Основная информация */}
           <div className="flex flex-col gap-2">
             {filteredFields.map((field) => (
-              <div key={field.id} className="flex justify-between items-start">
+              <div key={field.id} className="flex items-start">
                 <span className="text-sky-200 text-sm w-[150px] text-end">{`${field.label}:`}</span>
                 <span
                   className={`${
@@ -387,10 +387,9 @@ const GameItemCard = ({ itemData, lang }) => {
           {itemData.EffectDescriptions &&
             itemData.EffectDescriptions.length > 0 && (
               <div className="mt-2">
-                <p className="text-sm text-sky-200">Особые эффекты:</p>
                 <div className="flex gap-3 mt-1">
                   <span className="text-sm text-sky-200 w-[150px] text-end">
-                    Особые эффекты:
+                    {translations[lang].specialEffects}
                   </span>
                   <div className="flex flex-col">
                     {itemData.EffectDescriptions.map((eff, idx) => (
@@ -406,10 +405,9 @@ const GameItemCard = ({ itemData, lang }) => {
           {/* Улучшения */}
           {itemData.UpgradeMaxCount > 0 && (
             <div className="mt-2">
-              <p className="text-sm text-sky-200">Улучшения:</p>
               <div className="flex gap-3 mt-1">
                 <span className="text-sm text-sky-200 w-[150px] text-end">
-                  Улучшения:
+                  {translations[lang].upgrade}
                 </span>
                 <div>
                   <div className="flex mb-1">
@@ -441,7 +439,7 @@ const GameItemCard = ({ itemData, lang }) => {
           {/* Торговля */}
           <div className="flex gap-3 mt-2">
             <span className="text-sm text-sky-200 w-[150px] text-end">
-              Обмен:
+              {translations[lang].trade}
             </span>
             <span
               className={`text-sm ${
