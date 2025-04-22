@@ -249,8 +249,8 @@ const GameItemCard = ({ itemData }) => {
   }
 
   const spriteImage = itemData.SpriteFileName
-    ? `./src/assets/${itemData.SpriteFileName}`
-    : "./src/assets/default.webp";
+    ? `/assets/${itemData.SpriteFileName}`
+    : "/assets/default.webp";
 
   const filteredFields = dataFields.filter((field) => {
     try {
