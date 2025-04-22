@@ -407,7 +407,7 @@ const GameItemCard = ({ itemData, lang }) => {
       </div>
 
       <div
-        className="absolute left-full top-0 ml-2 min-w-[480px] z-50 origin-left"
+        className="absolute left-full top-0 ml-2 w-full min-w-[480px] z-50 origin-left"
         style={cardStyle}
       >
         <div
@@ -453,7 +453,7 @@ const GameItemCard = ({ itemData, lang }) => {
                   </span>
                   <div className="flex flex-col">
                     {itemData.EffectDescriptions.map((eff, idx) => (
-                      <p key={idx} className="text-sm max-w-[225px]">
+                      <p key={idx} className="text-sm w-full">
                         {eff}
                       </p>
                     ))}
