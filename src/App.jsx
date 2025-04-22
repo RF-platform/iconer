@@ -338,10 +338,7 @@ const GameItemCard = ({ itemData, lang }) => {
         }`}
       >
         {itemData.Count > 1 && (
-          <div
-            className="absolute top-0 right-0  text-white text-xs font-bold px-1 rounded-bl"
-            style={{ transform: "translate(50%, -50%)" }}
-          >
+          <div className="absolute top-4 right-4  text-white text-sm font-bold">
             {itemData.Count}
           </div>
         )}
