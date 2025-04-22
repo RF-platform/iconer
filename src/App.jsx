@@ -15,6 +15,46 @@ import Grace_Talic from "./assets/Grace_Talic.png";
 import Mercy_Talic from "./assets/Mercy_Talic.png";
 import Empty_Talic from "./assets/Empty_Talic.png";
 import testJson from "./test.json";
+const translations = {
+  en: {
+    loading: "Loading...",
+    description: "[Description]",
+    type: "Type",
+    requiredLevel: "Required Level",
+    race: "Race",
+    requiredSkill: "Required Skill",
+    attack: "Attack",
+    force: "Force",
+    defense: "Defense",
+    elements: "Elements",
+    cast: "Cast",
+    specialEffects: "Special Effects",
+    upgrade: "Upgrade",
+    trade: "Trade",
+    possible: "Possible",
+    impossible: "Impossible",
+    noData: "No item data found",
+  },
+  ru: {
+    loading: "Загрузка...",
+    description: "[Описание]",
+    type: "Класс",
+    requiredLevel: "Необходимый уровень",
+    race: "Раса",
+    requiredSkill: "Необходимое Умение",
+    attack: "Атака",
+    force: "Сила",
+    defense: "Показатель защиты",
+    elements: "Стихия",
+    cast: "Эффект",
+    specialEffects: "Особые эффекты",
+    upgrade: "Улучшения",
+    trade: "Обмен",
+    possible: "Возможен",
+    impossible: "Невозможен",
+    noData: "Данные не найдены",
+  },
+};
 
 const ItemDescription = ({ itemData, lang }) => {
   const convertHtml = (text) => {
@@ -120,47 +160,6 @@ const GameItemCard = ({ itemData, lang }) => {
       default:
         return { borderColor: "border-white", textColor: "text-white" };
     }
-  };
-
-  const translations = {
-    en: {
-      loading: "Loading...",
-      description: "[Description]",
-      type: "Type",
-      requiredLevel: "Required Level",
-      race: "Race",
-      requiredSkill: "Required Skill",
-      attack: "Attack",
-      force: "Force",
-      defense: "Defense",
-      elements: "Elements",
-      cast: "Cast",
-      specialEffects: "Special Effects",
-      upgrade: "Upgrade",
-      trade: "Trade",
-      possible: "Possible",
-      impossible: "Impossible",
-      noData: "No item data found",
-    },
-    ru: {
-      loading: "Загрузка...",
-      description: "[Описание]",
-      type: "Класс",
-      requiredLevel: "Необходимый уровень",
-      race: "Раса",
-      requiredSkill: "Необходимое Умение",
-      attack: "Атака",
-      force: "Сила",
-      defense: "Показатель защиты",
-      elements: "Стихия",
-      cast: "Эффект",
-      specialEffects: "Особые эффекты",
-      upgrade: "Улучшения",
-      trade: "Обмен",
-      possible: "Возможен",
-      impossible: "Невозможен",
-      noData: "Данные не найдены",
-    },
   };
 
   const dataFields = [
