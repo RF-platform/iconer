@@ -279,13 +279,33 @@ const GameItemCard = ({ itemData, lang }) => {
     )}`;
   }
 
-  function getUpgradedSingleValueAndColor(value, type) {
-    if (value == null || value === 0) return { value: null, color: null };
+  function getUpgradedValueAndColor(min, max, type) {
+    console.log("getUpgradedValueAndColor:", { min, max, type });
+    if (min == null || max == null) {
+      return { value: null, color: null };
+    }
+    const base = `${min} - ${max}`;
+    const multiplier = getUpgradeMultiplier(currentUpgrade, type);
+    const upgraded = applyMultiplier(base, multiplier);
+    const changed = upgraded !== base;
+    if (min === 0 && max === 0) {
+      return {
+        value: base,
+        color: "text-[#d1d1d1]",
+      };
+    }
+    return {
+      value: upgraded,
+      color: changed ? "text-[#00ff00]" : "text-[#d1d1d1]",
+    };
+  }
 
+  function getUpgradedSingleValueAndColor(value, type) {
+    console.log("getUpgradedSingleValueAndColor:", { value, type });
+    if (value == null || value === 0) return { value: null, color: null };
     const multiplier = getUpgradeMultiplier(currentUpgrade, type);
     const upgraded = Math.floor(value * multiplier);
     const changed = upgraded !== value;
-    console.log("multiplier", multiplier);
     return {
       value: upgraded,
       color: changed ? "text-[#00ff00]" : "text-[#d1d1d1]",
@@ -300,34 +320,15 @@ const GameItemCard = ({ itemData, lang }) => {
       else break;
     }
     const base = type === "defense" ? defenseMultipliers : attackMultipliers;
+    console.log("getUpgradeMultiplier:", { code, type, zeroCount });
     return (base[zeroCount] || 0) / 100 + 1;
   };
-
-  function getUpgradedValueAndColor(min, max, type) {
-    if (min == null || max == null) {
-      return { value: null, color: null };
-    }
-    const base = `${min} - ${max}`;
-    const multiplier = getUpgradeMultiplier(currentUpgrade, type);
-    const upgraded = applyMultiplier(base, multiplier);
-    const changed = upgraded !== base;
-
-    if (min === 0 && max === 0) {
-      return {
-        value: base,
-        color: "text-[#d1d1d1]",
-      };
-    }
-
-    return {
-      value: upgraded,
-      color: changed ? "text-[#00ff00]" : "text-[#d1d1d1]",
-    };
-  }
 
   const spriteImage = itemData.SpriteFileName
     ? `/assets/${itemData.SpriteFileName}`
     : "/assets/default.webp";
+
+  console.log("Item Code:", itemData.code);
 
   const filteredFields = dataFields.filter((field) => {
     try {
