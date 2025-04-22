@@ -78,7 +78,7 @@ const ItemDescription = ({ itemData, lang }) => {
         {translations[lang].description}
       </span>
       <p
-        className="text-sm max-w-[350px]  text-[#d1d1d1]"
+        className="text-sm max-w-[400px]  text-[#d1d1d1]"
         dangerouslySetInnerHTML={{ __html: description }}
       />
     </div>
