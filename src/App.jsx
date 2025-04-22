@@ -366,8 +366,8 @@ const GameItemCard = ({ itemData, lang }) => {
           {/* Основная информация */}
           <div className="flex flex-col gap-2">
             {filteredFields.map((field) => (
-              <div key={field.id} className="flex items-start">
-                <span className="text-sky-200 text-sm w-[150px] text-end">{`${field.label}:`}</span>
+              <div key={field.id} className="flex gap-3 items-start">
+                <span className="text-sky-200 text-sm w-[170px] text-end">{`${field.label}`}</span>
                 <span
                   className={`${
                     typeof field.color === "function"
