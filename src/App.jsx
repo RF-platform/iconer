@@ -362,7 +362,7 @@ const GameItemCard = ({ itemData, lang }) => {
         style={cardStyle}
       >
         <div
-          className={`border-[1px] p-2 relative ${
+          className={`border-[1px] py-2 px-[10px] relative ${
             getItemColors(itemData.ItemGrade).borderColor
           } bg-[rgba(5,16,26,0.94)] text-white w-full font-sans`}
         >
@@ -464,7 +464,7 @@ const GameItemCard = ({ itemData, lang }) => {
           </div>
           <ItemDescription itemData={itemData} lang={lang} />
           <div
-            className={`w-16 h-16 shrink-0 right-2 absolute top-4 bg-gray-800 border ${colors.borderColor}`}
+            className={`w-16 h-16 shrink-0 right-[10px] absolute top-4 bg-gray-800 border ${colors.borderColor}`}
           >
             <div
               className="w-full h-full bg-no-repeat"
