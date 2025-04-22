@@ -492,19 +492,24 @@ const App = () => {
         }
       );
       const groupedData = response.data.reduce((acc, item) => {
-        const key = `${item.code}-${item.upgrade}`;
-        if (!acc[key]) {
-          acc[key] = { ...item };
+        const key = `${item.code}-${item.upgrade}`.toLowerCase(); // Учитываем регистр
+
+        if (acc[key]) {
+          // Преобразуем count в число и суммируем
+          acc[key].count = (+acc[key].count || 0) + (+item.count || 0);
         } else {
-          acc[key].count += item.count;
+          // Клонируем объект и приводим count к числу
+          acc[key] = {
+            ...item,
+            count: +item.count || 1, // Если count отсутствует, устанавливаем 1
+          };
         }
         return acc;
       }, {});
 
       const mergedData = Object.values(groupedData);
-
+      console.log("Fixed grouped data:", mergedData);
       setItemData(mergedData);
-      console.log("Grouped data:", mergedData);
     } catch (err) {
       console.error("CORS Error:", err);
     }
@@ -520,14 +525,14 @@ const App = () => {
         <div className="flex flex-wrap gap-4">
           {itemData.map((item, index) => (
             <GameItemCard
-              itemData={item}
               key={`${item.code}-${item.upgrade}-${index}`}
+              itemData={item}
               lang={language}
             />
           ))}
         </div>
       ) : (
-        <div>{translations[language === "ru" ? "ru" : "en"].loading}</div>
+        <div>{translations[language].loading}</div>
       )}
     </div>
   );
