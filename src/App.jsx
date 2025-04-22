@@ -114,6 +114,7 @@ const itemTypeMap = {
   id: { en: "Shield", ru: "Щит" },
   iw: { en: "Weapon", ru: "Оружие" },
   ik: { en: "Cloak", ru: "Накидка" },
+  ir: { en: "Resources", ru: "Ресурсы" },
 };
 
 const GameItemCard = ({ itemData, lang }) => {
@@ -181,7 +182,14 @@ const GameItemCard = ({ itemData, lang }) => {
       id: "type",
       label: translations[lang].type,
       value: (item) => {
-        const typeCode = item.Code.slice(0, 2);
+        const typeCode = item.Code.slice(0, 2); // Берем первые две буквы кода
+
+        // Если тип - оружие (iw), выводим ItemClass из API
+        if (typeCode === "iw") {
+          return item.ItemClass || itemTypeMap[typeCode]?.[lang] || "Unknown";
+        }
+
+        // Для остальных типов используем itemTypeMap
         return itemTypeMap[typeCode]?.[lang] || "Unknown";
       },
     },
@@ -223,7 +231,7 @@ const GameItemCard = ({ itemData, lang }) => {
           return getUpgradedValueAndColor(item.MAMinAF, item.MAMaxAF, "force")
             .value;
         }
-        return null; // Скрываем силу для других типов
+        return null;
       },
       color: (item) => {
         const typeCode = item.Code.slice(0, 2);
@@ -249,7 +257,7 @@ const GameItemCard = ({ itemData, lang }) => {
         if (["iu", "il", "ig", "is", "ih", "id"].includes(typeCode)) {
           return getUpgradedSingleValueAndColor(item.DefFc, "defense").color;
         }
-        return null; // Скрываем цвет для других типов
+        return null;
       },
     },
     {
