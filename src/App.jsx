@@ -35,6 +35,7 @@ const translations = {
     impossible: "Impossible",
     noData: "No item data found",
     quantity: "Quantity",
+    typeWeapon: "Weapon",
   },
   ru: {
     loading: "Загрузка...",
@@ -55,6 +56,7 @@ const translations = {
     impossible: "Невозможен",
     noData: "Данные не найдены",
     quantity: "Количество",
+    typeWeapon: "Оружие",
   },
 };
 
@@ -168,7 +170,9 @@ const GameItemCard = ({ itemData, lang }) => {
       id: "type",
       label: translations[lang].type,
       value: (item) => {
-        return item.ItemClass === "Weapon" ? item.WeaponType : item.ItemClass;
+        return item.ItemClass === translations[lang].typeWeapon
+          ? item.WeaponType
+          : item.ItemClass;
       },
     },
     { id: "Count", label: translations[lang].quantity, value: "Count" },
@@ -350,7 +354,7 @@ const GameItemCard = ({ itemData, lang }) => {
         }`}
       >
         {itemData.Count > 1 && (
-          <div className="absolute -bottom-1 left-1 text-shadow-lg shadow-xl shadow-black  text-[#d1d1d1] text-base font-bold">
+          <div className="absolute -bottom-1 left-1 text-[#d1d1d1] text-base font-bold text-shadow">
             {itemData.Count}
           </div>
         )}
