@@ -181,7 +181,7 @@ const GameItemCard = ({ itemData, lang }) => {
       id: "type",
       label: translations[lang].type,
       value: (item) => {
-        const typeCode = item.code.slice(0, 2); // Берем первые две буквы кода
+        const typeCode = item.Code.slice(0, 2); // Берем первые две буквы кода
         return itemTypeMap[typeCode]?.[lang] || "Unknown"; // Возвращаем перевод
       },
     },
