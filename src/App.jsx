@@ -170,16 +170,11 @@ const GameItemCard = ({ itemData, language }) => {
     },
     {
       id: "level",
-      label: translations[language].requiredLevel,
+      label: "Required Level",
       value: "LevelLim",
       color: "",
     },
-    {
-      id: "race",
-      label: translations[language].race,
-      value: "Civil",
-      color: "[#F7F7F7]",
-    },
+    { id: "race", label: "Race", value: "Civil", color: "[#F7F7F7]" },
     {
       id: "skill",
       label: "Required Skill",
