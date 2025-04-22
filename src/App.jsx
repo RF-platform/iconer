@@ -105,6 +105,17 @@ const defenseMultipliers = {
   7: 120,
 };
 
+const itemTypeMap = {
+  iu: { en: "Upper", ru: "Торс" },
+  il: { en: "Lower", ru: "Ноги" },
+  ig: { en: "Arms", ru: "Руки" },
+  is: { en: "Shoe", ru: "Ступни" },
+  ih: { en: "Helmet", ru: "Голова" },
+  id: { en: "Shield", ru: "Щит" },
+  iw: { en: "Weapon", ru: "Оружие" },
+  ik: { en: "Cloak", ru: "Накидка" },
+};
+
 const GameItemCard = ({ itemData, lang }) => {
   const [isHovered, setIsHovered] = useState(false);
 
