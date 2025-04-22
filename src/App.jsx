@@ -45,7 +45,7 @@ const translations = {
     race: "Раса",
     requiredSkill: "Необходимое Умение",
     attack: "Атака",
-    force: "Сила",
+    force: "Силовая аттака",
     defense: "Показатель защиты",
     elements: "Стихия",
     cast: "Эффект",
