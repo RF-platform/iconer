@@ -100,7 +100,7 @@ const defenseMultipliers = {
   7: 120,
 };
 
-const GameItemCard = ({ itemData, language }) => {
+const GameItemCard = ({ itemData, lang }) => {
   const [colors, setColors] = useState({
     borderColor: "border-white",
     textColor: "text-white",
@@ -161,34 +161,58 @@ const GameItemCard = ({ itemData, language }) => {
     }
   };
 
+  const translations = {
+    en: {
+      type: "Type",
+      level: "Required Level",
+      race: "Race",
+      skill: "Required Skill",
+      attack: "Attack",
+      force: "Force",
+      defense: "Defense",
+      elements: "Elements",
+      cast: "Cast",
+      description: "Description",
+      specialEffects: "Special Effects",
+      upgrade: "Upgrade",
+      trade: "Trade",
+      possibility: "Possibility",
+      impossible: "Impossible",
+      loading: "Loading...",
+    },
+    ru: {
+      type: "Тип",
+      level: "Требуемый уровень",
+      race: "Раса",
+      skill: "Требуемый навык",
+      attack: "Атака",
+      force: "Сила",
+      defense: "Защита",
+      elements: "Элементы",
+      cast: "Каст",
+      description: "Описание",
+      specialEffects: "Специальные эффекты",
+      upgrade: "Улучшение",
+      trade: "Торговля",
+      possibility: "Возможна",
+      impossible: "Невозможна",
+      loading: "Загрузка...",
+    },
+  };
+
   const dataFields = [
-    {
-      id: "type",
-      label: translations[language].type,
-      value: "WeaponType",
-      color: "[#F7F7F7]",
-    },
-    {
-      id: "level",
-      label: "Required Level",
-      value: "LevelLim",
-      color: "",
-    },
-    { id: "race", label: "Race", value: "Civil", color: "[#F7F7F7]" },
+    { id: "type", label: translations[lang].type, value: "WeaponType" },
+    { id: "level", label: translations[lang].level, value: "LevelLim" },
+    { id: "race", label: translations[lang].race, value: "Civil" },
     {
       id: "skill",
-      label: "Required Skill",
-      value: ({ ExpertID1, ExpertLim1 }) => {
-        if (ExpertID1 && ExpertLim1) {
-          return `${ExpertID1} ${ExpertLim1}`;
-        }
-        return null;
-      },
-      color: "",
+      label: translations[lang].skill,
+      value: ({ ExpertID1, ExpertLim1 }) =>
+        ExpertID1 && ExpertLim1 ? `${ExpertID1} ${ExpertLim1}` : null,
     },
     {
       id: "attack",
-      label: "Attack",
+      label: translations[lang].attack,
       value: (item) =>
         getUpgradedValueAndColor(item.GAMinAF, item.GAMaxAF, "attack").value,
       color: (item) =>
@@ -196,42 +220,33 @@ const GameItemCard = ({ itemData, language }) => {
     },
     {
       id: "force",
-      label: "Force",
+      label: translations[lang].force,
       value: (item) =>
         getUpgradedValueAndColor(item.MAMinAF, item.MAMaxAF, "force").value,
       color: (item) =>
         getUpgradedValueAndColor(item.MAMinAF, item.MAMaxAF, "force").color,
     },
-
     {
       id: "defense",
-      label: "Defense",
+      label: translations[lang].defense,
       value: (item) =>
         getUpgradedSingleValueAndColor(item.DefFc, "defense").value,
       color: (item) =>
         getUpgradedSingleValueAndColor(item.DefFc, "defense").color,
     },
-
     {
       id: "elements",
-      label: "Elements",
+      label: translations[lang].elements,
       value: (item) => {
-        const elements = [];
-        if (item.FireTol > 0) elements.push(`Fire ${item.FireTol}`);
-        if (item.WaterTol > 0) elements.push(`Water ${item.WaterTol}`);
-        if (item.SoilTol > 0) elements.push(`Soil ${item.SoilTol}`);
-        if (item.WindTol > 0) elements.push(`Wind ${item.WindTol}`);
-
-        return elements.length > 0 ? elements.join(", ") : null;
+        const elems = [];
+        if (item.FireTol > 0) elems.push(`Fire ${item.FireTol}`);
+        if (item.WaterTol > 0) elems.push(`Water ${item.WaterTol}`);
+        if (item.SoilTol > 0) elems.push(`Soil ${item.SoilTol}`);
+        if (item.WindTol > 0) elems.push(`Wind ${item.WindTol}`);
+        return elems.length ? elems.join(", ") : null;
       },
-      color: "",
     },
-    {
-      id: "ForceName",
-      label: "Cast",
-      value: "ForceName",
-      color: "green-500",
-    },
+    { id: "cast", label: translations[lang].cast, value: "ForceName" },
   ];
 
   if (!itemData) {
@@ -355,7 +370,11 @@ const GameItemCard = ({ itemData, language }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className={`w-16 h-16 bg-gray-800 border ${colors.borderColor}`}>
+      <div
+        className={`w-16 h-16 bg-gray-800 border ${
+          getItemColors(itemData.Ggrade).borderColor
+        }`}
+      >
         <div
           className="w-full h-full bg-no-repeat"
           style={{
@@ -370,12 +389,18 @@ const GameItemCard = ({ itemData, language }) => {
         style={cardStyle}
       >
         <div
-          className={`border-[1px] p-3 relative ${colors.borderColor} bg-[rgba(5,16,26,0.94)] text-white w-full font-sans`}
+          className={`border-[1px] p-3 relative ${
+            getItemColors(itemData.Ggrade).borderColor
+          } bg-[rgba(5,16,26,0.94)] text-white w-full font-sans`}
         >
-          <h2 className={`${colors.textColor} text-sm mb-2 text-center`}>
-            [{translations[language].itemData.Name}]
+          <h2
+            className={`${
+              getItemColors(itemData.Ggrade).textColor
+            } text-sm mb-2 text-center`}
+          >
+            [{itemData.Name}]
           </h2>
-          <div className="flex gap-4 relative  justify-between">
+          <div className="flex gap-4 relative justify-between">
             <div>
               <div className="flex justify-between items-start">
                 <div className="space-y-1">
@@ -384,21 +409,17 @@ const GameItemCard = ({ itemData, language }) => {
                       <span className="text-sky-200 w-[100px] text-end text-sm">
                         {field.label}
                       </span>
-                      {(() => {
-                        const value =
-                          typeof field.value === "function"
-                            ? field.value(itemData)
-                            : itemData[field.value];
-
-                        const color =
+                      <span
+                        className={`${
                           typeof field.color === "function"
                             ? field.color(itemData)
-                            : field.color;
-
-                        return (
-                          <span className={`${color} text-sm`}>{value}</span>
-                        );
-                      })()}
+                            : field.color
+                        } text-sm`}
+                      >
+                        {typeof field.value === "function"
+                          ? field.value(itemData)
+                          : itemData[field.value]}
+                      </span>
                     </p>
                   ))}
                 </div>
@@ -406,14 +427,14 @@ const GameItemCard = ({ itemData, language }) => {
 
               {itemData.EffectDescriptions &&
                 itemData.EffectDescriptions.length > 0 && (
-                  <div className="flex gap-3 mt-1 items-">
+                  <div className="flex gap-3 mt-1 items-start">
                     <p className="text-sm w-[100px] text-end text-sky-200">
-                      Special Effects
+                      {translations[lang].specialEffects}
                     </p>
                     <div className="flex flex-col">
-                      {itemData.EffectDescriptions.map((effect, index) => (
-                        <p key={index} className="text-sm max-w-[210px]">
-                          {effect}
+                      {itemData.EffectDescriptions.map((eff, idx) => (
+                        <p key={idx} className="text-sm max-w-[210px]">
+                          {eff}
                         </p>
                       ))}
                     </div>
@@ -421,33 +442,30 @@ const GameItemCard = ({ itemData, language }) => {
                 )}
 
               {itemData.UpgradeMaxCount > 0 && (
-                <div className="flex gap-3 mt-1 items-">
+                <div className="flex gap-3 mt-1 items-start">
                   <p className="text-sm w-[100px] text-end text-sky-200">
-                    Upgrade
+                    {translations[lang].upgrade}
                   </p>
                   <div>
                     <div className="flex mb-1">
                       {[...Array(itemData.UpgradeMaxCount)].map((_, i) => {
-                        const upgradeChar = (
-                          currentUpgrade.slice(1, currentUpgrade.length)[i] ||
-                          "F"
+                        const codeChar = (
+                          currentUpgrade.slice(1)[i] || "F"
                         ).toUpperCase();
-                        const TalicImage =
-                          upgradeImageMap[upgradeChar] || Empty_Talic;
-
+                        const Img = upgradeImageMap[codeChar] || Empty_Talic;
                         return (
                           <img
                             key={i}
-                            src={TalicImage}
-                            className="w-4 h-7 object-cover"
+                            src={Img}
                             alt={`Upgrade ${i + 1}`}
+                            className="w-4 h-7 object-cover"
                           />
                         );
                       })}
                     </div>
-                    {itemData.UpgradeNames.map((name, index) => (
-                      <p key={index} className="text-sm">
-                        {itemData.UpgradeDescriptions[index]}
+                    {itemData.UpgradeNames.map((name, idx) => (
+                      <p key={idx} className="text-sm">
+                        {itemData.UpgradeDescriptions[idx]}
                       </p>
                     ))}
                   </div>
@@ -456,7 +474,7 @@ const GameItemCard = ({ itemData, language }) => {
 
               <div className="flex gap-3">
                 <span className="text-sm w-[100px] text-end text-sky-200">
-                  Trade
+                  {translations[lang].trade}
                 </span>
                 <span
                   className={`text-sm ${
@@ -465,10 +483,13 @@ const GameItemCard = ({ itemData, language }) => {
                       : "text-red-500"
                   }`}
                 >
-                  {itemData.IsExchange === 1 ? "Possibility" : "Impossible"}
+                  {itemData.IsExchange === 1
+                    ? translations[lang].possibility
+                    : translations[lang].impossible}
                 </span>
               </div>
-              <ItemDescription itemData={itemData} />
+
+              <ItemDescription itemData={itemData} lang={lang} />
             </div>
             <div
               className={`w-16 h-16 absolute  right-0  bg-gray-800 border ${colors.borderColor}`}
@@ -518,7 +539,7 @@ const App = () => {
       {itemData.length > 0 ? (
         <div className="flex flex-wrap gap-4">
           {itemData.map((item, key) => (
-            <GameItemCard itemData={item} key={key} language={language} />
+            <GameItemCard itemData={item} key={key} lang={language} />
           ))}
         </div>
       ) : (
