@@ -512,7 +512,7 @@ const App = () => {
   useEffect(() => {
     fetchItemData();
   }, [language]);
-  console.log("huy", itemData);
+  console.log("itemData", itemData);
   return (
     <div className="container mx-auto p-4">
       {itemData.length > 0 ? (
@@ -522,7 +522,7 @@ const App = () => {
           ))}
         </div>
       ) : (
-        <div>{translations[language === "ru" ? "rus" : "eng"].loading}</div>
+        <div>{translations[language === "ru" ? "ru" : "en"].loading}</div>
       )}
     </div>
   );
