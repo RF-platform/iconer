@@ -351,7 +351,7 @@ const GameItemCard = ({ itemData, lang }) => {
         style={cardStyle}
       >
         <div
-          className={`border-[1px] p-3 relative ${
+          className={`border-[1px] p-2 relative ${
             getItemColors(itemData.Ggrade).borderColor
           } bg-[rgba(5,16,26,0.94)] text-white w-full font-sans`}
         >
@@ -367,7 +367,7 @@ const GameItemCard = ({ itemData, lang }) => {
           <div className="flex flex-col gap-2">
             {filteredFields.map((field) => (
               <div key={field.id} className="flex gap-3 items-start">
-                <span className="text-sky-200 text-sm w-[170px] text-end">{`${field.label}`}</span>
+                <span className="text-sky-200 text-sm w-[160px] text-end">{`${field.label}`}</span>
                 <span
                   className={`${
                     typeof field.color === "function"
@@ -388,7 +388,7 @@ const GameItemCard = ({ itemData, lang }) => {
             itemData.EffectDescriptions.length > 0 && (
               <div className="mt-2">
                 <div className="flex gap-3 mt-1">
-                  <span className="text-sm text-sky-200 w-[150px] text-end">
+                  <span className="text-sm text-sky-200 w-[160px] text-end">
                     {translations[lang].specialEffects}
                   </span>
                   <div className="flex flex-col">
@@ -406,7 +406,7 @@ const GameItemCard = ({ itemData, lang }) => {
           {itemData.UpgradeMaxCount > 0 && (
             <div className="mt-2">
               <div className="flex gap-3 mt-1">
-                <span className="text-sm text-sky-200 w-[150px] text-end">
+                <span className="text-sm text-sky-200 w-[160px] text-end">
                   {translations[lang].upgrade}
                 </span>
                 <div>
