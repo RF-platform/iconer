@@ -16,6 +16,47 @@ import Mercy_Talic from "./assets/Mercy_Talic.png";
 import Empty_Talic from "./assets/Empty_Talic.png";
 import testJson from "./test.json";
 
+const translations = {
+  eng: {
+    loading: "Loading...",
+    description: "[Description]",
+    type: "Type",
+    requiredLevel: "Required Level",
+    race: "Race",
+    requiredSkill: "Required Skill",
+    attack: "Attack",
+    force: "Force",
+    defense: "Defense",
+    elements: "Elements",
+    cast: "Cast",
+    specialEffects: "Special Effects",
+    upgrade: "Upgrade",
+    trade: "Trade",
+    possible: "Possible",
+    impossible: "Impossible",
+    noData: "No item data found",
+  },
+  rus: {
+    loading: "Загрузка...",
+    description: "[Описание]",
+    type: "Тип",
+    requiredLevel: "Требуемый уровень",
+    race: "Раса",
+    requiredSkill: "Требуемый навык",
+    attack: "Атака",
+    force: "Сила",
+    defense: "Защита",
+    elements: "Элементы",
+    cast: "Эффект",
+    specialEffects: "Особые эффекты",
+    upgrade: "Улучшение",
+    trade: "Обмен",
+    possible: "Возможен",
+    impossible: "Невозможен",
+    noData: "Данные не найдены",
+  },
+};
+
 const ItemDescription = ({ itemData }) => {
   const convertHtml = (text) => {
     text = text.replace(
@@ -39,8 +80,6 @@ const ItemDescription = ({ itemData }) => {
   );
 };
 
-const apiUrl = "https://item-app-9yyo4.ondigitalocean.app/api/items";
-
 const attackMultipliers = {
   1: 25,
   2: 50,
@@ -61,7 +100,7 @@ const defenseMultipliers = {
   7: 120,
 };
 
-const GameItemCard = ({ itemData }) => {
+const GameItemCard = ({ itemData, language }) => {
   const [colors, setColors] = useState({
     borderColor: "border-white",
     textColor: "text-white",
@@ -123,14 +162,24 @@ const GameItemCard = ({ itemData }) => {
   };
 
   const dataFields = [
-    { id: "type", label: "Type", value: "WeaponType", color: "[#F7F7F7]" },
+    {
+      id: "type",
+      label: translations[language].type,
+      value: "WeaponType",
+      color: "[#F7F7F7]",
+    },
     {
       id: "level",
-      label: "Required Level",
+      label: translations[language].requiredLevel,
       value: "LevelLim",
       color: "",
     },
-    { id: "race", label: "Race", value: "Civil", color: "[#F7F7F7]" },
+    {
+      id: "race",
+      label: translations[language].race,
+      value: "Civil",
+      color: "[#F7F7F7]",
+    },
     {
       id: "skill",
       label: "Required Skill",
@@ -329,7 +378,7 @@ const GameItemCard = ({ itemData }) => {
           className={`border-[1px] p-3 relative ${colors.borderColor} bg-[rgba(5,16,26,0.94)] text-white w-full font-sans`}
         >
           <h2 className={`${colors.textColor} text-sm mb-2 text-center`}>
-            [{itemData.Name}]
+            [{translations[language].itemData.Name}]
           </h2>
           <div className="flex gap-4 relative  justify-between">
             <div>
@@ -446,10 +495,11 @@ const GameItemCard = ({ itemData }) => {
 
 const App = () => {
   const [itemData, setItemData] = useState([]);
+  const [language, setLanguage] = useState("ru");
   const fetchItemData = async () => {
     try {
       const response = await axios.post(
-        apiUrl,
+        `https://item-app-9yyo4.ondigitalocean.app/api/items?lang=${language}`,
         { list: testJson },
         {
           headers: {
@@ -466,18 +516,18 @@ const App = () => {
 
   useEffect(() => {
     fetchItemData();
-  }, []);
+  }, [language]);
   console.log("huy", itemData);
   return (
     <div className="container mx-auto p-4">
       {itemData.length > 0 ? (
         <div className="flex flex-wrap gap-4">
           {itemData.map((item, key) => (
-            <GameItemCard itemData={item} key={key} />
+            <GameItemCard itemData={item} key={key} language={language} />
           ))}
         </div>
       ) : (
-        <div>Загрузка...</div>
+        <div>{translations[language === "ru" ? "rus" : "eng"].loading}</div>
       )}
     </div>
   );
