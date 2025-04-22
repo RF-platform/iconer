@@ -235,7 +235,7 @@ const GameItemCard = ({ itemData, lang }) => {
     console.log("multiplier", multiplier);
     return {
       value: upgraded,
-      color: changed ? "text-green-500" : "text-white",
+      color: changed ? "text-[#00ff00]" : "text-white",
     };
   }
 
@@ -268,7 +268,7 @@ const GameItemCard = ({ itemData, lang }) => {
 
     return {
       value: upgraded,
-      color: changed ? "text-green-500" : "text-white",
+      color: changed ? "text-[#00ff00]" : "text-white",
     };
   }
 
@@ -451,7 +451,7 @@ const GameItemCard = ({ itemData, lang }) => {
             </span>
             <span
               className={`text-sm ${
-                itemData.IsExchange === 1 ? "text-green-500" : "text-red-500"
+                itemData.IsExchange === 1 ? "text-[#00ff00]" : "text-red-500"
               }`}
             >
               {itemData.IsExchange === 1
