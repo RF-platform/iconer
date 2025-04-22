@@ -9,7 +9,7 @@ app.use(express.json());
 
 // Configure CORS
 app.use(cors({
-  origin: '*',
+  origin: 'https://iconer.rf-platform.online',
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
