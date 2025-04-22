@@ -76,7 +76,7 @@ const ItemDescription = ({ itemData, lang }) => {
         {translations[lang].description}
       </span>
       <p
-        className="text-sm  text-[#C0C2C4]"
+        className="text-sm  text-[#d1d1d1]"
         dangerouslySetInnerHTML={{ __html: description }}
       />
     </div>
@@ -104,10 +104,6 @@ const defenseMultipliers = {
 };
 
 const GameItemCard = ({ itemData, lang }) => {
-  const [colors, setColors] = useState({
-    borderColor: "border-[#d1d1d1]",
-    textColor: "text-[#d1d1d1]",
-  });
   const [isHovered, setIsHovered] = useState(false);
 
   const upgradeImageMap = {
