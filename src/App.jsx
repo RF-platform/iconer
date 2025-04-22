@@ -337,6 +337,14 @@ const GameItemCard = ({ itemData, lang }) => {
           getItemColors(itemData.Ggrade).borderColor
         }`}
       >
+        {itemData.count > 1 && (
+          <div
+            className="absolute top-0 right-0  text-white text-xs font-bold px-1 rounded-bl"
+            style={{ transform: "translate(50%, -50%)" }}
+          >
+            {itemData.count}
+          </div>
+        )}
         <div
           className="w-full h-full bg-no-repeat"
           style={{
@@ -393,7 +401,7 @@ const GameItemCard = ({ itemData, lang }) => {
                   </span>
                   <div className="flex flex-col">
                     {itemData.EffectDescriptions.map((eff, idx) => (
-                      <p key={idx} className="text-sm max-w-[210px]">
+                      <p key={idx} className="text-sm">
                         {eff}
                       </p>
                     ))}
