@@ -60,23 +60,6 @@ const translations = {
   },
 };
 
-const itemTypeMap = {
-  iu: { en: "Upper", ru: "Торс" },
-  il: { en: "Lower", ru: "Ноги" },
-  ig: { en: "Arms", ru: "Руки" },
-  is: { en: "Shoe", ru: "Ступни" },
-  ih: { en: "Helmet", ru: "Голова" },
-  id: { en: "Shield", ru: "Щит" },
-  iw: { en: "Weapon", ru: "Оружие" },
-  ik: { en: "Cloak", ru: "Накидка" },
-};
-
-const getItemType = (code, lang) => {
-  const typeCode = code.slice(0, 2); // Берем первые две буквы кода
-  return itemTypeMap[typeCode]?.[lang] || "Unknown"; // Возвращаем перевод или "Unknown"
-};
-
-console.log("itemTypeMap", itemTypeMap);
 const ItemDescription = ({ itemData, lang }) => {
   const convertHtml = (text) => {
     text = text.replace(
@@ -187,11 +170,8 @@ const GameItemCard = ({ itemData, lang }) => {
       id: "type",
       label: translations[lang].type,
       value: (item) => {
-        // Если это оружие, показываем WeaponType, иначе тип предмета
-        const itemType = getItemType(item.code, lang);
-        return itemType === translations[lang].weapon
-          ? item.WeaponType
-          : itemType;
+        const typeCode = item.code.slice(0, 2); // Берем первые две буквы кода
+        return itemTypeMap[typeCode]?.[lang] || "Unknown"; // Возвращаем перевод
       },
     },
     { id: "Count", label: translations[lang].quantity, value: "Count" },
@@ -206,26 +186,60 @@ const GameItemCard = ({ itemData, lang }) => {
     {
       id: "attack",
       label: translations[lang].attack,
-      value: (item) =>
-        getUpgradedValueAndColor(item.GAMinAF, item.GAMaxAF, "attack").value,
-      color: (item) =>
-        getUpgradedValueAndColor(item.GAMinAF, item.GAMaxAF, "attack").color,
+      value: (item) => {
+        const typeCode = item.code.slice(0, 2);
+        if (typeCode === "iw") {
+          return getUpgradedValueAndColor(item.GAMinAF, item.GAMaxAF, "attack")
+            .value;
+        }
+        return null; // Скрываем атаку для других типов
+      },
+      color: (item) => {
+        const typeCode = item.code.slice(0, 2);
+        if (typeCode === "iw") {
+          return getUpgradedValueAndColor(item.GAMinAF, item.GAMaxAF, "attack")
+            .color;
+        }
+        return null; // Скрываем цвет для других типов
+      },
     },
     {
       id: "force",
       label: translations[lang].force,
-      value: (item) =>
-        getUpgradedValueAndColor(item.MAMinAF, item.MAMaxAF, "force").value,
-      color: (item) =>
-        getUpgradedValueAndColor(item.MAMinAF, item.MAMaxAF, "force").color,
+      value: (item) => {
+        const typeCode = item.code.slice(0, 2);
+        if (typeCode === "iw") {
+          return getUpgradedValueAndColor(item.MAMinAF, item.MAMaxAF, "force")
+            .value;
+        }
+        return null; // Скрываем силу для других типов
+      },
+      color: (item) => {
+        const typeCode = item.code.slice(0, 2);
+        if (typeCode === "iw") {
+          return getUpgradedValueAndColor(item.MAMinAF, item.MAMaxAF, "force")
+            .color;
+        }
+        return null; // Скрываем цвет для других типов
+      },
     },
     {
       id: "defense",
       label: translations[lang].defense,
-      value: (item) =>
-        getUpgradedSingleValueAndColor(item.DefFc, "defense").value,
-      color: (item) =>
-        getUpgradedSingleValueAndColor(item.DefFc, "defense").color,
+      value: (item) => {
+        const typeCode = item.code.slice(0, 2);
+        if (["iu", "il", "ig", "is", "ih", "id"].includes(typeCode)) {
+          return getUpgradedSingleValueAndColor(item.DefFc, "defense").value;
+        }
+        return null; // Скрываем защиту для других типов
+      },
+      color: (item) => {
+        const typeCode = item.code.slice(0, 2);
+        if (["iu", "il", "ig", "is", "ih", "id"].includes(typeCode)) {
+          return getUpgradedSingleValueAndColor(item.DefFc, "defense").color;
+        }
+        return null; // Скрываем цвет для других типов
+      },
     },
     {
       id: "elements",
