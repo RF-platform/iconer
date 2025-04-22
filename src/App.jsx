@@ -105,8 +105,8 @@ const defenseMultipliers = {
 
 const GameItemCard = ({ itemData, lang }) => {
   const [colors, setColors] = useState({
-    borderColor: "border-[#c8d9ff]",
-    textColor: "text-[#c8d9ff]",
+    borderColor: "border-[#d1d1d1]",
+    textColor: "text-[#d1d1d1]",
   });
   const [isHovered, setIsHovered] = useState(false);
 
@@ -168,7 +168,13 @@ const GameItemCard = ({ itemData, lang }) => {
   };
 
   const dataFields = [
-    { id: "type", label: translations[lang].type, value: "WeaponType" },
+    {
+      id: "type",
+      label: translations[lang].type,
+      value: (item) => {
+        return item.ItemClass === "Weapon" ? item.WeaponType : item.ItemClass;
+      },
+    },
     { id: "Count", label: translations[lang].quantity, value: "Count" },
     { id: "level", label: translations[lang].requiredLevel, value: "LevelLim" },
     { id: "race", label: translations[lang].race, value: "Civil" },
@@ -238,7 +244,7 @@ const GameItemCard = ({ itemData, lang }) => {
     console.log("multiplier", multiplier);
     return {
       value: upgraded,
-      color: changed ? "text-[#00ff00]" : "text-[#c8d9ff]",
+      color: changed ? "text-[#00ff00]" : "text-[#d1d1d1]",
     };
   }
 
@@ -265,13 +271,13 @@ const GameItemCard = ({ itemData, lang }) => {
     if (min === 0 && max === 0) {
       return {
         value: base,
-        color: "text-[#c8d9ff]",
+        color: "text-[#d1d1d1]",
       };
     }
 
     return {
       value: upgraded,
-      color: changed ? "text-[#00ff00]" : "text-[#c8d9ff]",
+      color: changed ? "text-[#00ff00]" : "text-[#d1d1d1]",
     };
   }
 
@@ -325,7 +331,7 @@ const GameItemCard = ({ itemData, lang }) => {
   if (!itemData) {
     return (
       <div
-        className="w-16 h-16 bg-gray-800 border border-[#c8d9ff] animate-pulse"
+        className="w-16 h-16 bg-gray-800 border border-[#d1d1d1] animate-pulse"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       />
@@ -344,7 +350,7 @@ const GameItemCard = ({ itemData, lang }) => {
         }`}
       >
         {itemData.Count > 1 && (
-          <div className="absolute -bottom-1 left-1 text-shadow-lg shadow-black  text-[#c8d9ff] text-base font-bold">
+          <div className="absolute -bottom-1 left-1 text-shadow-lg shadow-black  text-[#d1d1d1] text-base font-bold">
             {itemData.Count}
           </div>
         )}
@@ -364,7 +370,7 @@ const GameItemCard = ({ itemData, lang }) => {
         <div
           className={`border-[1px] py-2 px-[10px] relative ${
             getItemColors(itemData.ItemGrade).borderColor
-          } bg-[rgba(5,16,26,0.94)] text-[#c8d9ff] w-full font-sans`}
+          } bg-[rgba(5,16,26,0.94)] text-[#d1d1d1] w-full font-sans`}
         >
           <h2
             className={`${
