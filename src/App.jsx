@@ -60,6 +60,22 @@ const translations = {
   },
 };
 
+const itemTypeMap = {
+  iu: { en: "Upper", ru: "Торс" },
+  il: { en: "Lower", ru: "Ноги" },
+  ig: { en: "Arms", ru: "Руки" },
+  is: { en: "Shoe", ru: "Ступни" },
+  ih: { en: "Helmet", ru: "Голова" },
+  id: { en: "Shield", ru: "Щит" },
+  iw: { en: "Weapon", ru: "Оружие" },
+  ik: { en: "Cloak", ru: "Накидка" },
+};
+
+const getItemType = (code, lang) => {
+  const typeCode = code.slice(0, 2); // Берем первые две буквы кода
+  return itemTypeMap[typeCode]?.[lang] || "Unknown"; // Возвращаем перевод или "Unknown"
+};
+
 const ItemDescription = ({ itemData, lang }) => {
   const convertHtml = (text) => {
     text = text.replace(
@@ -170,9 +186,11 @@ const GameItemCard = ({ itemData, lang }) => {
       id: "type",
       label: translations[lang].type,
       value: (item) => {
-        return item.ItemClass === translations[lang].typeWeapon
+        // Если это оружие, показываем WeaponType, иначе тип предмета
+        const itemType = getItemType(item.code, lang);
+        return itemType === translations[lang].weapon
           ? item.WeaponType
-          : item.ItemClass;
+          : itemType;
       },
     },
     { id: "Count", label: translations[lang].quantity, value: "Count" },
