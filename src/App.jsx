@@ -344,7 +344,7 @@ const GameItemCard = ({ itemData, lang }) => {
         }`}
       >
         {itemData.Count > 1 && (
-          <div className="absolute -bottom-1 left-1 shadow-2xs shadow-white  text-white text-base font-bold">
+          <div className="absolute -bottom-1 left-1 text-shadow-lg shadow-black  text-white text-base font-bold">
             {itemData.Count}
           </div>
         )}
