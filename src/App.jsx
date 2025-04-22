@@ -14,7 +14,7 @@ import Glory_Talic from "./assets/Glory_Talic.png";
 import Grace_Talic from "./assets/Grace_Talic.png";
 import Mercy_Talic from "./assets/Mercy_Talic.png";
 import Empty_Talic from "./assets/Empty_Talic.png";
-import testJson from "./test3.json";
+import testJson from "./test4.json";
 const translations = {
   en: {
     loading: "Loading...",
@@ -220,7 +220,7 @@ const GameItemCard = ({ itemData, lang }) => {
           return getUpgradedValueAndColor(item.MAMinAF, item.MAMaxAF, "force")
             .color;
         }
-        return null; // Скрываем цвет для других типов
+        return null;
       },
     },
     {
@@ -231,7 +231,7 @@ const GameItemCard = ({ itemData, lang }) => {
         if (["iu", "il", "ig", "is", "ih", "id"].includes(typeCode)) {
           return getUpgradedSingleValueAndColor(item.DefFc, "defense").value;
         }
-        return null; // Скрываем защиту для других типов
+        return null;
       },
       color: (item) => {
         const typeCode = item.code.slice(0, 2);
