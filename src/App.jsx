@@ -470,7 +470,9 @@ const GameItemCard = ({ itemData, lang }) => {
           </div>
           <ItemDescription itemData={itemData} lang={lang} />
           <div
-            className={`w-16 h-16 shrink-0 right-[10px] absolute top-4 bg-gray-800 border ${colors.borderColor}`}
+            className={`w-16 h-16 shrink-0 right-[10px] absolute top-4 bg-gray-800 border   ${
+              getItemColors(itemData.ItemGrade).borderColor
+            }`}
           >
             <div
               className="w-full h-full bg-no-repeat"
