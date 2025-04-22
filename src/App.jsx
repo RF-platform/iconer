@@ -364,109 +364,112 @@ const GameItemCard = ({ itemData, lang }) => {
           </h2>
 
           {/* Основная информация */}
-          <div className="flex flex-col gap-2">
-            {filteredFields.map((field) => (
-              <div key={field.id} className="flex gap-3 items-start">
-                <span className="text-sky-200 text-sm w-[160px] text-end">{`${field.label}`}</span>
-                <span
-                  className={`${
-                    typeof field.color === "function"
-                      ? field.color(itemData)
-                      : field.color
-                  } text-sm`}
-                >
-                  {typeof field.value === "function"
-                    ? field.value(itemData)
-                    : itemData[field.value]}
-                </span>
+          <div className="flex gap-4">
+            <div>
+              <div className="flex flex-col gap-2">
+                {filteredFields.map((field) => (
+                  <div key={field.id} className="flex gap-3 items-start">
+                    <span className="text-sky-200 text-sm w-[160px] text-end">{`${field.label}`}</span>
+                    <span
+                      className={`${
+                        typeof field.color === "function"
+                          ? field.color(itemData)
+                          : field.color
+                      } text-sm`}
+                    >
+                      {typeof field.value === "function"
+                        ? field.value(itemData)
+                        : itemData[field.value]}
+                    </span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
 
-          {/* Особые эффекты */}
-          {itemData.EffectDescriptions &&
-            itemData.EffectDescriptions.length > 0 && (
-              <div className="mt-2">
-                <div className="flex gap-3 mt-1">
-                  <span className="text-sm text-sky-200 w-[160px] text-end">
-                    {translations[lang].specialEffects}
-                  </span>
-                  <div className="flex flex-col">
-                    {itemData.EffectDescriptions.map((eff, idx) => (
-                      <p key={idx} className="text-sm max-w-[210px]">
-                        {eff}
-                      </p>
-                    ))}
+              {/* Особые эффекты */}
+              {itemData.EffectDescriptions &&
+                itemData.EffectDescriptions.length > 0 && (
+                  <div className="mt-2">
+                    <div className="flex gap-3 mt-1">
+                      <span className="text-sm text-sky-200 w-[160px] text-end">
+                        {translations[lang].specialEffects}
+                      </span>
+                      <div className="flex flex-col">
+                        {itemData.EffectDescriptions.map((eff, idx) => (
+                          <p key={idx} className="text-sm max-w-[210px]">
+                            {eff}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+              {/* Улучшения */}
+              {itemData.UpgradeMaxCount > 0 && (
+                <div className="mt-2">
+                  <div className="flex gap-3 mt-1">
+                    <span className="text-sm text-sky-200 w-[160px] text-end">
+                      {translations[lang].upgrade}
+                    </span>
+                    <div>
+                      <div className="flex mb-1">
+                        {[...Array(itemData.UpgradeMaxCount)].map((_, i) => {
+                          const codeChar = (
+                            currentUpgrade.slice(1)[i] || "F"
+                          ).toUpperCase();
+                          const Img = upgradeImageMap[codeChar] || Empty_Talic;
+                          return (
+                            <img
+                              key={i}
+                              src={Img}
+                              alt={`Upgrade ${i + 1}`}
+                              className="w-4 h-7 object-cover"
+                            />
+                          );
+                        })}
+                      </div>
+                      {itemData.UpgradeNames.map((name, idx) => (
+                        <p key={idx} className="text-sm">
+                          {itemData.UpgradeDescriptions[idx]}
+                        </p>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
+              )}
 
-          {/* Улучшения */}
-          {itemData.UpgradeMaxCount > 0 && (
-            <div className="mt-2">
-              <div className="flex gap-3 mt-1">
+              {/* Торговля */}
+              <div className="flex gap-3 mt-2">
                 <span className="text-sm text-sky-200 w-[160px] text-end">
-                  {translations[lang].upgrade}
+                  {translations[lang].trade}
                 </span>
-                <div>
-                  <div className="flex mb-1">
-                    {[...Array(itemData.UpgradeMaxCount)].map((_, i) => {
-                      const codeChar = (
-                        currentUpgrade.slice(1)[i] || "F"
-                      ).toUpperCase();
-                      const Img = upgradeImageMap[codeChar] || Empty_Talic;
-                      return (
-                        <img
-                          key={i}
-                          src={Img}
-                          alt={`Upgrade ${i + 1}`}
-                          className="w-4 h-7 object-cover"
-                        />
-                      );
-                    })}
-                  </div>
-                  {itemData.UpgradeNames.map((name, idx) => (
-                    <p key={idx} className="text-sm">
-                      {itemData.UpgradeDescriptions[idx]}
-                    </p>
-                  ))}
-                </div>
+                <span
+                  className={`text-sm ${
+                    itemData.IsExchange === 1
+                      ? "text-green-500"
+                      : "text-red-500"
+                  }`}
+                >
+                  {itemData.IsExchange === 1
+                    ? translations[lang].possible
+                    : translations[lang].impossible}
+                </span>
               </div>
             </div>
-          )}
-
-          {/* Торговля */}
-          <div className="flex gap-3 mt-2">
-            <span className="text-sm text-sky-200 w-[150px] text-end">
-              {translations[lang].trade}
-            </span>
-            <span
-              className={`text-sm ${
-                itemData.IsExchange === 1 ? "text-green-500" : "text-red-500"
-              }`}
-            >
-              {itemData.IsExchange === 1
-                ? translations[lang].possible
-                : translations[lang].impossible}
-            </span>
-          </div>
-
-          {/* Описание */}
-          <ItemDescription itemData={itemData} lang={lang} />
-
-          {/* Изображение справа */}
-          <div
-            className={`w-16 h-16 shrink-0 right-0 absolute top-0 bg-gray-800 border ${colors.borderColor}`}
-          >
             <div
-              className="w-full h-full bg-no-repeat"
-              style={{
-                backgroundImage: `url(${spriteImage})`,
-                backgroundPosition: `${itemData.SpriteX}px ${itemData.SpriteY}px`,
-              }}
-            />
+              className={`w-16 h-16 shrink-0 right-0  top-0 bg-gray-800 border ${colors.borderColor}`}
+            >
+              <div
+                className="w-full h-full bg-no-repeat"
+                style={{
+                  backgroundImage: `url(${spriteImage})`,
+                  backgroundPosition: `${itemData.SpriteX}px ${itemData.SpriteY}px`,
+                }}
+              />
+            </div>
           </div>
+
+          <ItemDescription itemData={itemData} lang={lang} />
         </div>
       </div>
     </div>
