@@ -14,7 +14,7 @@ import Glory_Talic from "./assets/Glory_Talic.png";
 import Grace_Talic from "./assets/Grace_Talic.png";
 import Mercy_Talic from "./assets/Mercy_Talic.png";
 import Empty_Talic from "./assets/Empty_Talic.png";
-import testJson from "./test.json";
+import testJson from "./test3.json";
 const translations = {
   en: {
     loading: "Loading...",
@@ -516,6 +516,7 @@ const App = () => {
   useEffect(() => {
     fetchItemData();
   }, [language]);
+
   console.log("itemData", itemData);
   return (
     <div className="container mx-auto p-4">
