@@ -292,6 +292,10 @@ const GameItemCard = ({ itemData, lang }) => {
           ? field.value(itemData)
           : itemData[field.value];
 
+      if (field.id === "Count" && value === 1) {
+        return false;
+      }
+
       if (
         value === undefined ||
         value === null ||
@@ -350,7 +354,7 @@ const GameItemCard = ({ itemData, lang }) => {
         }`}
       >
         {itemData.Count > 1 && (
-          <div className="absolute -bottom-1 left-1 text-shadow-lg shadow-black  text-[#d1d1d1] text-base font-bold">
+          <div className="absolute -bottom-1 left-1 text-shadow-lg shadow-xl shadow-black  text-[#d1d1d1] text-base font-bold">
             {itemData.Count}
           </div>
         )}
