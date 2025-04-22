@@ -368,7 +368,7 @@ const GameItemCard = ({ itemData, lang }) => {
                 <div className="space-y-1">
                   {filteredFields.map((field) => (
                     <p key={field.id} className="flex gap-3">
-                      <span className="text-sky-200 w-[112px] text-end text-sm">
+                      <span className="text-sky-200 w-[220px] text-end text-sm">
                         {field.label}
                       </span>
                       <span
@@ -390,7 +390,7 @@ const GameItemCard = ({ itemData, lang }) => {
               {itemData.EffectDescriptions &&
                 itemData.EffectDescriptions.length > 0 && (
                   <div className="flex gap-3 mt-1 items-start">
-                    <p className="text-sm  text-end w-[112px] text-sky-200">
+                    <p className="text-sm  text-end w-[220px] text-sky-200">
                       {translations[lang].specialEffects}
                     </p>
                     <div className="flex flex-col">
@@ -405,7 +405,7 @@ const GameItemCard = ({ itemData, lang }) => {
 
               {itemData.UpgradeMaxCount > 0 && (
                 <div className="flex gap-3 mt-1 items-start">
-                  <p className="text-sm  text-end w-[112px] text-sky-200">
+                  <p className="text-sm  text-end w-[220px] text-sky-200">
                     {translations[lang].upgrade}
                   </p>
                   <div>
@@ -435,7 +435,7 @@ const GameItemCard = ({ itemData, lang }) => {
               )}
 
               <div className="flex gap-3">
-                <span className="text-sm  text-end w-[112px] text-sky-200">
+                <span className="text-sm  text-end w-[220px] text-sky-200">
                   {translations[lang].trade}
                 </span>
                 <span
@@ -454,7 +454,7 @@ const GameItemCard = ({ itemData, lang }) => {
               <ItemDescription itemData={itemData} lang={lang} />
             </div>
             <div
-              className={`w-16 h-16   right-0  bg-gray-800 border ${colors.borderColor}`}
+              className={`w-16 h-16 shrink-0 right-0  bg-gray-800 border ${colors.borderColor}`}
             >
               <div
                 className="w-full h-full bg-no-repeat"
