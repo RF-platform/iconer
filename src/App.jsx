@@ -15,46 +15,6 @@ import Grace_Talic from "./assets/Grace_Talic.png";
 import Mercy_Talic from "./assets/Mercy_Talic.png";
 import Empty_Talic from "./assets/Empty_Talic.png";
 import testJson from "./test.json";
-const translations = {
-  en: {
-    loading: "Loading...",
-    description: "[Description]",
-    type: "Type",
-    requiredLevel: "Required Level",
-    race: "Race",
-    requiredSkill: "Required Skill",
-    attack: "Attack",
-    force: "Force",
-    defense: "Defense",
-    elements: "Elements",
-    cast: "Cast",
-    specialEffects: "Special Effects",
-    upgrade: "Upgrade",
-    trade: "Trade",
-    possible: "Possible",
-    impossible: "Impossible",
-    noData: "No item data found",
-  },
-  ru: {
-    loading: "Загрузка...",
-    description: "[Описание]",
-    type: "Тип",
-    requiredLevel: "Требуемый уровень",
-    race: "Раса",
-    requiredSkill: "Требуемый навык",
-    attack: "Атака",
-    force: "Сила",
-    defense: "Защита",
-    elements: "Элементы",
-    cast: "Эффект",
-    specialEffects: "Особые эффекты",
-    upgrade: "Улучшение",
-    trade: "Обмен",
-    possible: "Возможен",
-    impossible: "Невозможен",
-    noData: "Данные не найдены",
-  },
-};
 
 const ItemDescription = ({ itemData, lang }) => {
   const convertHtml = (text) => {
@@ -71,7 +31,7 @@ const ItemDescription = ({ itemData, lang }) => {
   return (
     <div className="mt-4">
       <span className="text-sm text-sky-200">
-        [{translations[lang].description}]
+        {translations[lang].description}
       </span>
       <p
         className="text-sm max-w-[270px] text-[#C0C2C4]"
@@ -164,40 +124,42 @@ const GameItemCard = ({ itemData, lang }) => {
 
   const translations = {
     en: {
+      loading: "Loading...",
+      description: "[Description]",
       type: "Type",
-      level: "Required Level",
+      requiredLevel: "Required Level",
       race: "Race",
-      skill: "Required Skill",
+      requiredSkill: "Required Skill",
       attack: "Attack",
       force: "Force",
       defense: "Defense",
       elements: "Elements",
       cast: "Cast",
-      description: "Description",
       specialEffects: "Special Effects",
       upgrade: "Upgrade",
       trade: "Trade",
-      possibility: "Possibility",
+      possible: "Possible",
       impossible: "Impossible",
-      loading: "Loading...",
+      noData: "No item data found",
     },
     ru: {
-      type: "Тип",
-      level: "Требуемый уровень",
+      loading: "Загрузка...",
+      description: "[Описание]",
+      type: "Класс",
+      requiredLevel: "Необходимый уровень",
       race: "Раса",
-      skill: "Требуемый навык",
+      requiredSkill: "Необходимое Умение",
       attack: "Атака",
       force: "Сила",
-      defense: "Защита",
-      elements: "Элементы",
-      cast: "Каст",
-      description: "Описание",
-      specialEffects: "Специальные эффекты",
-      upgrade: "Улучшение",
-      trade: "Торговля",
-      possibility: "Возможна",
-      impossible: "Невозможна",
-      loading: "Загрузка...",
+      defense: "Показатель защиты",
+      elements: "Стихия",
+      cast: "Эффект",
+      specialEffects: "Особые эффекты",
+      upgrade: "Улучшения",
+      trade: "Обмен",
+      possible: "Возможен",
+      impossible: "Невозможен",
+      noData: "Данные не найдены",
     },
   };
 
@@ -376,6 +338,11 @@ const GameItemCard = ({ itemData, lang }) => {
           getItemColors(itemData.Ggrade).borderColor
         }`}
       >
+        {itemData.count > 1 && (
+          <div className="absolute top-0 right-0 bg-black bg-opacity-70 rounded-bl-lg px-1.5 text-white text-xs font-bold z-10">
+            {itemData.count}
+          </div>
+        )}
         <div
           className="w-full h-full bg-no-repeat"
           style={{
@@ -525,7 +492,17 @@ const App = () => {
           },
         }
       );
-      setItemData(response.data);
+      const groupedData = response.data.reduce((acc, item) => {
+        const key = `${item.code}-${item.upgrade}`;
+        if (acc[key]) {
+          acc[key].count += item.count;
+        } else {
+          acc[key] = { ...item };
+        }
+        return acc;
+      }, {});
+
+      setItemData(Object.values(groupedData));
     } catch (err) {
       console.error("CORS Error:", err);
     }
