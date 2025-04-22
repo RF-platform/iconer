@@ -37,7 +37,7 @@ const ItemDescription = ({ itemData }) => {
 };
 
 const apiUrl =
-  "https://cors-anywhere.herokuapp.com/https://db.arcanum.rf-platform.online/api/items";
+  "https://item-app-9yyo4.ondigitalocean.app/api/items";
 
   const attackMultipliers = {
     1: 25,   
