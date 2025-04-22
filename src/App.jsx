@@ -347,7 +347,7 @@ const GameItemCard = ({ itemData, lang }) => {
       </div>
 
       <div
-        className="absolute left-full top-0 ml-2 min-w-[450px] z-50 origin-left"
+        className="absolute left-full top-0 ml-2 min-w-[480px] z-50 origin-left"
         style={cardStyle}
       >
         <div
