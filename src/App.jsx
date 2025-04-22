@@ -17,7 +17,7 @@ import Empty_Talic from "./assets/Empty_Talic.png";
 import testJson from "./test.json";
 
 const translations = {
-  eng: {
+  en: {
     loading: "Loading...",
     description: "[Description]",
     type: "Type",
@@ -36,7 +36,7 @@ const translations = {
     impossible: "Impossible",
     noData: "No item data found",
   },
-  rus: {
+  ru: {
     loading: "Загрузка...",
     description: "[Описание]",
     type: "Тип",
