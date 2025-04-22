@@ -336,10 +336,7 @@ const GameItemCard = ({ itemData, lang }) => {
           ? field.value(itemData)
           : itemData[field.value];
 
-      if (field.id === "Count" && value === 1) {
-        return false;
-      }
-
+      // Если значение пустое или null, скрываем поле
       if (
         value === undefined ||
         value === null ||
@@ -348,19 +345,9 @@ const GameItemCard = ({ itemData, lang }) => {
         return false;
       }
 
-      if (itemData?.ItemClass === "Torso") {
-        if (field.id === "defense") {
-          return true;
-        }
-        if (["attack", "force_attack"].includes(field.id)) {
-          return false;
-        }
-      } else if (field.id === "defense") {
+      // Дополнительная логика для скрытия Count при значении 1
+      if (field.id === "Count" && value === 1) {
         return false;
-      }
-
-      if (field.id === "ForceName") {
-        return !!itemData?.ForceName && itemData.ForceName.trim() !== "";
       }
 
       return true;
