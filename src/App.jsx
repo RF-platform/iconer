@@ -383,7 +383,7 @@ const GameItemCard = ({ itemData, lang }) => {
   console.log("spriteImageeee", spriteImage);
   return (
     <div
-      className="relative"
+      className="relative inline-block"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -407,7 +407,7 @@ const GameItemCard = ({ itemData, lang }) => {
       </div>
 
       <div
-        className="absolute left-full top-0 ml-2 w-full min-w-[480px] z-50 origin-left"
+        className="absolute left-full top-0 ml-2 w-max min-w-[480px] max-w-[70vw] z-50 origin-left"
         style={cardStyle}
       >
         <div
@@ -446,18 +446,19 @@ const GameItemCard = ({ itemData, lang }) => {
           {/* Особые эффекты */}
           {itemData.EffectDescriptions &&
             itemData.EffectDescriptions.length > 0 && (
-              <div className="mt-2">
-                <div className="flex gap-3 mt-1">
-                  <span className="text-sm text-[#8dacda] min-w-[160px] w-full text-nowrap text-end">
-                    {translations[lang].specialEffects}
-                  </span>
-                  <div className="flex flex-col">
-                    {itemData.EffectDescriptions.map((eff, idx) => (
-                      <p key={idx} className="text-sm w-full text-nowrap">
-                        {eff}
-                      </p>
-                    ))}
-                  </div>
+              <div className="flex gap-3 mt-3">
+                <span className="text-sm text-[#8dacda] w-[160px] text-end">
+                  {translations[lang].specialEffects}
+                </span>
+                <div className="flex-1 flex flex-col">
+                  {itemData.EffectDescriptions.map((eff, idx) => (
+                    <p
+                      key={idx}
+                      className="text-sm whitespace-normal break-words"
+                    >
+                      {eff}
+                    </p>
+                  ))}
                 </div>
               </div>
             )}
