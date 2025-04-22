@@ -70,7 +70,7 @@ const ItemDescription = ({ itemData, lang }) => {
 
   return (
     <div className="mt-4">
-      <span className="text-sm text-sky-200">
+      <span className="text-sm text-[#8dacda]">
         {translations[lang].description}
       </span>
       <p
@@ -129,7 +129,7 @@ const GameItemCard = ({ itemData, lang }) => {
   const getItemColors = (grade) => {
     switch (grade) {
       case 0:
-        return { borderColor: "border-white", textColor: "text-white" };
+        return { borderColor: "border-[#6d699a]", textColor: "text-[#6d699a]" };
       case 1:
         return {
           borderColor: "border-yellow-400",
@@ -334,11 +334,11 @@ const GameItemCard = ({ itemData, lang }) => {
     >
       <div
         className={`w-16 h-16 bg-gray-800 border ${
-          getItemColors(itemData.Ggrade).borderColor
+          getItemColors(itemData.ItemGrade).borderColor
         }`}
       >
         {itemData.Count > 1 && (
-          <div className="absolute -top-[2px] right-[2px]  text-white text-base font-bold">
+          <div className="absolute bottom-0 left-0 shadow-2xs shadow-white  text-white text-base font-bold">
             {itemData.Count}
           </div>
         )}
@@ -357,12 +357,12 @@ const GameItemCard = ({ itemData, lang }) => {
       >
         <div
           className={`border-[1px] p-2 relative ${
-            getItemColors(itemData.Ggrade).borderColor
+            getItemColors(itemData.ItemGrade).borderColor
           } bg-[rgba(5,16,26,0.94)] text-white w-full font-sans`}
         >
           <h2
             className={`${
-              getItemColors(itemData.Ggrade).textColor
+              getItemColors(itemData.ItemGrade).textColor
             } text-sm mb-2 text-center`}
           >
             [{itemData.Name}]
@@ -372,7 +372,7 @@ const GameItemCard = ({ itemData, lang }) => {
           <div className="flex flex-col gap-2">
             {filteredFields.map((field) => (
               <div key={field.id} className="flex gap-3 items-start">
-                <span className="text-sky-200 text-sm w-[160px] text-end">{`${field.label}`}</span>
+                <span className="text-[#8dacda] text-sm w-[160px] text-end">{`${field.label}`}</span>
                 <span
                   className={`${
                     typeof field.color === "function"
@@ -393,7 +393,7 @@ const GameItemCard = ({ itemData, lang }) => {
             itemData.EffectDescriptions.length > 0 && (
               <div className="mt-2">
                 <div className="flex gap-3 mt-1">
-                  <span className="text-sm text-sky-200 w-[160px] text-end">
+                  <span className="text-sm text-[#8dacda] w-[160px] text-end">
                     {translations[lang].specialEffects}
                   </span>
                   <div className="flex flex-col">
@@ -411,7 +411,7 @@ const GameItemCard = ({ itemData, lang }) => {
           {itemData.UpgradeMaxCount > 0 && (
             <div className="mt-2">
               <div className="flex gap-3 mt-1">
-                <span className="text-sm text-sky-200 w-[160px] text-end">
+                <span className="text-sm text-[#8dacda] w-[160px] text-end">
                   {translations[lang].upgrade}
                 </span>
                 <div>
@@ -443,7 +443,7 @@ const GameItemCard = ({ itemData, lang }) => {
 
           {/* Торговля */}
           <div className="flex gap-3 mt-2">
-            <span className="text-sm text-sky-200 w-[160px] text-end">
+            <span className="text-sm text-[#8dacda] w-[160px] text-end">
               {translations[lang].trade}
             </span>
             <span
