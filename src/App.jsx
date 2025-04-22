@@ -201,12 +201,12 @@ const GameItemCard = ({ itemData, lang }) => {
         getUpgradedValueAndColor(item.MAMinAF, item.MAMaxAF, "force").color,
     },
     {
-      id: "defense",
+      id: "DefFc",
       label: translations[lang].defense,
       value: (item) =>
-        getUpgradedSingleValueAndColor(item.DefFc, "defense").value,
+        getUpgradedSingleValueAndColor(item.DefFc, "DefFc").value,
       color: (item) =>
-        getUpgradedSingleValueAndColor(item.DefFc, "defense").color,
+        getUpgradedSingleValueAndColor(item.DefFc, "DefFc").color,
     },
     {
       id: "elements",
@@ -255,7 +255,7 @@ const GameItemCard = ({ itemData, lang }) => {
       if (section[i] === "0") zeroCount++;
       else break;
     }
-    const base = type === "defense" ? defenseMultipliers : attackMultipliers;
+    const base = type === "DefFc" ? defenseMultipliers : attackMultipliers;
     return (base[zeroCount] || 0) / 100 + 1;
   };
 
@@ -305,13 +305,13 @@ const GameItemCard = ({ itemData, lang }) => {
       }
 
       if (itemData?.ItemClass === "Torso") {
-        if (field.id === "defense") {
+        if (field.id === "DefFc") {
           return true;
         }
         if (["attack", "force_attack"].includes(field.id)) {
           return false;
         }
-      } else if (field.id === "defense") {
+      } else if (field.id === "DefFc") {
         return false;
       }
 
