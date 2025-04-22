@@ -169,7 +169,7 @@ const GameItemCard = ({ itemData, lang }) => {
 
   const dataFields = [
     { id: "type", label: translations[lang].type, value: "WeaponType" },
-    { id: "quantity", label: translations[lang].quantity, value: "Quantity" },
+    { id: "Count", label: translations[lang].quantity, value: "Count" },
     { id: "level", label: translations[lang].requiredLevel, value: "LevelLim" },
     { id: "race", label: translations[lang].race, value: "Civil" },
     {
