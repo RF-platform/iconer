@@ -362,108 +362,112 @@ const GameItemCard = ({ itemData, lang }) => {
           >
             [{itemData.Name}]
           </h2>
-          <div className="flex gap-4 relative justify-between">
-            <div>
-              <div className="flex justify-between items-start">
-                <div className="space-y-1">
-                  {filteredFields.map((field) => (
-                    <p key={field.id} className="flex gap-3">
-                      <span className="text-sky-200 w-[220px] text-end text-sm">
-                        {field.label}
-                      </span>
-                      <span
-                        className={`${
-                          typeof field.color === "function"
-                            ? field.color(itemData)
-                            : field.color
-                        } text-sm`}
-                      >
-                        {typeof field.value === "function"
-                          ? field.value(itemData)
-                          : itemData[field.value]}
-                      </span>
-                    </p>
-                  ))}
-                </div>
+
+          {/* Основная информация */}
+          <div className="flex flex-col gap-2">
+            {filteredFields.map((field) => (
+              <div key={field.id} className="flex justify-between items-start">
+                <span className="text-sky-200 text-sm w-[150px] text-end">{`${field.label}:`}</span>
+                <span
+                  className={`${
+                    typeof field.color === "function"
+                      ? field.color(itemData)
+                      : field.color
+                  } text-sm`}
+                >
+                  {typeof field.value === "function"
+                    ? field.value(itemData)
+                    : itemData[field.value]}
+                </span>
               </div>
+            ))}
+          </div>
 
-              {itemData.EffectDescriptions &&
-                itemData.EffectDescriptions.length > 0 && (
-                  <div className="flex gap-3 mt-1 items-start">
-                    <p className="text-sm  text-end w-[220px] text-sky-200">
-                      {translations[lang].specialEffects}
-                    </p>
-                    <div className="flex flex-col">
-                      {itemData.EffectDescriptions.map((eff, idx) => (
-                        <p key={idx} className="text-sm max-w-[210px]">
-                          {eff}
-                        </p>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-              {itemData.UpgradeMaxCount > 0 && (
-                <div className="flex gap-3 mt-1 items-start">
-                  <p className="text-sm  text-end w-[220px] text-sky-200">
-                    {translations[lang].upgrade}
-                  </p>
-                  <div>
-                    <div className="flex mb-1">
-                      {[...Array(itemData.UpgradeMaxCount)].map((_, i) => {
-                        const codeChar = (
-                          currentUpgrade.slice(1)[i] || "F"
-                        ).toUpperCase();
-                        const Img = upgradeImageMap[codeChar] || Empty_Talic;
-                        return (
-                          <img
-                            key={i}
-                            src={Img}
-                            alt={`Upgrade ${i + 1}`}
-                            className="w-4 h-7 object-cover"
-                          />
-                        );
-                      })}
-                    </div>
-                    {itemData.UpgradeNames.map((name, idx) => (
-                      <p key={idx} className="text-sm">
-                        {itemData.UpgradeDescriptions[idx]}
+          {/* Особые эффекты */}
+          {itemData.EffectDescriptions &&
+            itemData.EffectDescriptions.length > 0 && (
+              <div className="mt-2">
+                <p className="text-sm text-sky-200">Особые эффекты:</p>
+                <div className="flex gap-3 mt-1">
+                  <span className="text-sm text-sky-200 w-[150px] text-end">
+                    Особые эффекты:
+                  </span>
+                  <div className="flex flex-col">
+                    {itemData.EffectDescriptions.map((eff, idx) => (
+                      <p key={idx} className="text-sm max-w-[210px]">
+                        {eff}
                       </p>
                     ))}
                   </div>
                 </div>
-              )}
-
-              <div className="flex gap-3">
-                <span className="text-sm  text-end w-[220px] text-sky-200">
-                  {translations[lang].trade}
-                </span>
-                <span
-                  className={`text-sm ${
-                    itemData.IsExchange === 1
-                      ? "text-green-500"
-                      : "text-red-500"
-                  }`}
-                >
-                  {itemData.IsExchange === 1
-                    ? translations[lang].possible
-                    : translations[lang].impossible}
-                </span>
               </div>
+            )}
 
-              <ItemDescription itemData={itemData} lang={lang} />
+          {/* Улучшения */}
+          {itemData.UpgradeMaxCount > 0 && (
+            <div className="mt-2">
+              <p className="text-sm text-sky-200">Улучшения:</p>
+              <div className="flex gap-3 mt-1">
+                <span className="text-sm text-sky-200 w-[150px] text-end">
+                  Улучшения:
+                </span>
+                <div>
+                  <div className="flex mb-1">
+                    {[...Array(itemData.UpgradeMaxCount)].map((_, i) => {
+                      const codeChar = (
+                        currentUpgrade.slice(1)[i] || "F"
+                      ).toUpperCase();
+                      const Img = upgradeImageMap[codeChar] || Empty_Talic;
+                      return (
+                        <img
+                          key={i}
+                          src={Img}
+                          alt={`Upgrade ${i + 1}`}
+                          className="w-4 h-7 object-cover"
+                        />
+                      );
+                    })}
+                  </div>
+                  {itemData.UpgradeNames.map((name, idx) => (
+                    <p key={idx} className="text-sm">
+                      {itemData.UpgradeDescriptions[idx]}
+                    </p>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div
-              className={`w-16 h-16 shrink-0 right-0  bg-gray-800 border ${colors.borderColor}`}
+          )}
+
+          {/* Торговля */}
+          <div className="flex gap-3 mt-2">
+            <span className="text-sm text-sky-200 w-[150px] text-end">
+              Обмен:
+            </span>
+            <span
+              className={`text-sm ${
+                itemData.IsExchange === 1 ? "text-green-500" : "text-red-500"
+              }`}
             >
-              <div
-                className="w-full h-full bg-no-repeat"
-                style={{
-                  backgroundImage: `url(${spriteImage})`,
-                  backgroundPosition: `${itemData.SpriteX}px ${itemData.SpriteY}px`,
-                }}
-              />
-            </div>
+              {itemData.IsExchange === 1
+                ? translations[lang].possible
+                : translations[lang].impossible}
+            </span>
+          </div>
+
+          {/* Описание */}
+          <ItemDescription itemData={itemData} lang={lang} />
+
+          {/* Изображение справа */}
+          <div
+            className={`w-16 h-16 shrink-0 right-0 absolute top-0 bg-gray-800 border ${colors.borderColor}`}
+          >
+            <div
+              className="w-full h-full bg-no-repeat"
+              style={{
+                backgroundImage: `url(${spriteImage})`,
+                backgroundPosition: `${itemData.SpriteX}px ${itemData.SpriteY}px`,
+              }}
+            />
           </div>
         </div>
       </div>
