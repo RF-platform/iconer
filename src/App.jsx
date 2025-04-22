@@ -328,8 +328,8 @@ const GameItemCard = ({ itemData, lang }) => {
     ? `/assets/${itemData.SpriteFileName}`
     : "/assets/default.webp";
 
-  console.log("Item Code:", itemData[0].Code);
-  console.log("Item Code2222:", itemData.Code);
+  // console.log("Item Code:", itemData[0].Code);
+  // console.log("Item Code2222:", itemData.Code);
 
   const filteredFields = dataFields.filter((field) => {
     try {
