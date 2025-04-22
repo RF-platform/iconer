@@ -407,7 +407,7 @@ const GameItemCard = ({ itemData, lang }) => {
       </div>
 
       <div
-        className="absolute left-full top-0 ml-2 min-w-[480px] z-50 origin-left"
+        className="absolute left-full top-0 ml-2 max-w-screen overflow-x-auto z-50 origin-left"
         style={cardStyle}
       >
         <div
@@ -427,7 +427,7 @@ const GameItemCard = ({ itemData, lang }) => {
           <div className="flex flex-col gap-2">
             {filteredFields.map((field) => (
               <div key={field.id} className="flex gap-3 items-start">
-                <span className="text-[#8dacda] text-sm w-[160px] text-end">{`${field.label}`}</span>
+                <span className="text-[#8dacda] text-sm flex-shrink-0 text-end">{`${field.label}`}</span>
                 <span
                   className={`${
                     typeof field.color === "function"
@@ -448,12 +448,12 @@ const GameItemCard = ({ itemData, lang }) => {
             itemData.EffectDescriptions.length > 0 && (
               <div className="mt-2">
                 <div className="flex gap-3 mt-1">
-                  <span className="text-sm text-[#8dacda] w-[160px] text-end">
+                  <span className="text-sm text-[#8dacda] flex-shrink-0 text-end">
                     {translations[lang].specialEffects}
                   </span>
                   <div className="flex flex-col">
                     {itemData.EffectDescriptions.map((eff, idx) => (
-                      <p key={idx} className="text-sm max-w-[225px]">
+                      <p key={idx} className="text-sm">
                         {eff}
                       </p>
                     ))}
@@ -466,7 +466,7 @@ const GameItemCard = ({ itemData, lang }) => {
           {itemData.UpgradeMaxCount > 0 && (
             <div className="mt-2">
               <div className="flex gap-3 mt-1">
-                <span className="text-sm text-[#8dacda] w-[160px] text-end">
+                <span className="text-sm text-[#8dacda] flex-shrink-0 text-end">
                   {translations[lang].upgrade}
                 </span>
                 <div>
@@ -498,7 +498,7 @@ const GameItemCard = ({ itemData, lang }) => {
 
           {/* Торговля */}
           <div className="flex gap-3 mt-2">
-            <span className="text-sm text-[#8dacda] w-[160px] text-end">
+            <span className="text-sm text-[#8dacda] flex-shrink-0 text-end">
               {translations[lang].trade}
             </span>
             <span
