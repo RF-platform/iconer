@@ -448,7 +448,7 @@ const GameItemCard = ({ itemData, lang }) => {
             itemData.EffectDescriptions.length > 0 && (
               <div className="mt-2">
                 <div className="flex gap-3 mt-1">
-                  <span className="text-sm text-[#8dacda] w-[160px] text-nowrap text-end">
+                  <span className="text-sm text-[#8dacda] min-w-[160px] w-full text-nowrap text-end">
                     {translations[lang].specialEffects}
                   </span>
                   <div className="flex flex-col">
