@@ -132,33 +132,36 @@ const GameItemCard = ({ itemData, lang }) => {
         return { borderColor: "border-[#6d699a]", textColor: "text-[#6d699a]" };
       case 1:
         return {
-          borderColor: "border-yellow-400",
-          textColor: "text-yellow-400",
+          borderColor: "border-[#ffff80]",
+          textColor: "text-[#ffff80]",
         };
       case 2:
         return {
-          borderColor: "border-purple-500",
-          textColor: "text-purple-500",
+          borderColor: "border-[#bd91ff]",
+          textColor: "text-[#bd91ff]",
         };
       case 3:
         return {
-          borderColor: "border-orange-500",
-          textColor: "text-orange-500",
+          borderColor: "border-[#fc9d07]",
+          textColor: "text-[#fc9d07]",
         };
       case 4:
-        return { borderColor: "border-blue-500", textColor: "text-blue-500" };
+        return { borderColor: "border-[#0099ff]", textColor: "text-[#0099ff]" };
       case 5:
-        return { borderColor: "border-pink-400", textColor: "text-pink-400" };
+        return { borderColor: "border-[#ffccff]", textColor: "text-[#ffccff]" };
       case 6:
-        return { borderColor: "border-blue-400", textColor: "text-blue-400" };
+        return { borderColor: "border-[#9af0fc]", textColor: "text-[#9af0fc]" };
       case 7:
+        return { borderColor: "border-[#66ff66]", textColor: "text-[#66ff66]" };
       case 8:
+        return { borderColor: "border-[#66ff66]", textColor: "text-[#66ff66]" };
       case 9:
+        return { borderColor: "border-[#ecd0a6]", textColor: "text-[#ecd0a6]" };
       case 10:
-        return { borderColor: "border-red-500", textColor: "text-red-500" };
+        return { borderColor: "border-[#ff3b0d]", textColor: "text-[#ff3b0d]" };
 
       default:
-        return { borderColor: "border-white", textColor: "text-white" };
+        return { borderColor: "border-[#6d699a]", textColor: "text-[#6d699a]" };
     }
   };
 
