@@ -453,7 +453,7 @@ const GameItemCard = ({ itemData, lang }) => {
                   </span>
                   <div className="flex flex-col">
                     {itemData.EffectDescriptions.map((eff, idx) => (
-                      <p key={idx} className="text-sm w-full">
+                      <p key={idx} className="text-sm w-full text-nowrap">
                         {eff}
                       </p>
                     ))}
