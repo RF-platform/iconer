@@ -383,7 +383,7 @@ const GameItemCard = ({ itemData, lang }) => {
   console.log("spriteImageeee", spriteImage);
   return (
     <div
-      className="relative inline-block"
+      className="relative"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
