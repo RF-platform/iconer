@@ -337,11 +337,6 @@ const GameItemCard = ({ itemData, lang }) => {
           getItemColors(itemData.Ggrade).borderColor
         }`}
       >
-        {itemData.count > 1 && (
-          <div className="absolute top-0 right-0 bg-black bg-opacity-70 rounded-bl-lg px-1.5 text-white text-xs font-bold z-10">
-            {itemData.count}
-          </div>
-        )}
         <div
           className="w-full h-full bg-no-repeat"
           style={{
@@ -395,7 +390,7 @@ const GameItemCard = ({ itemData, lang }) => {
               {itemData.EffectDescriptions &&
                 itemData.EffectDescriptions.length > 0 && (
                   <div className="flex gap-3 mt-1 items-start">
-                    <p className="text-sm w-[100px] text-end text-sky-200">
+                    <p className="text-sm  text-end text-sky-200">
                       {translations[lang].specialEffects}
                     </p>
                     <div className="flex flex-col">
@@ -410,7 +405,7 @@ const GameItemCard = ({ itemData, lang }) => {
 
               {itemData.UpgradeMaxCount > 0 && (
                 <div className="flex gap-3 mt-1 items-start">
-                  <p className="text-sm w-[100px] text-end text-sky-200">
+                  <p className="text-sm  text-end text-sky-200">
                     {translations[lang].upgrade}
                   </p>
                   <div>
@@ -440,7 +435,7 @@ const GameItemCard = ({ itemData, lang }) => {
               )}
 
               <div className="flex gap-3">
-                <span className="text-sm w-[100px] text-end text-sky-200">
+                <span className="text-sm  text-end text-sky-200">
                   {translations[lang].trade}
                 </span>
                 <span
@@ -470,7 +465,7 @@ const GameItemCard = ({ itemData, lang }) => {
               />
             </div>
           </div>
-        </div>{" "}
+        </div>
       </div>
     </div>
   );
@@ -491,25 +486,7 @@ const App = () => {
           },
         }
       );
-      const groupedData = response.data.reduce((acc, item) => {
-        const key = `${item.code}-${item.upgrade}`.toLowerCase(); // Учитываем регистр
-
-        if (acc[key]) {
-          // Преобразуем count в число и суммируем
-          acc[key].count = (+acc[key].count || 0) + (+item.count || 0);
-        } else {
-          // Клонируем объект и приводим count к числу
-          acc[key] = {
-            ...item,
-            count: +item.count || 1, // Если count отсутствует, устанавливаем 1
-          };
-        }
-        return acc;
-      }, {});
-
-      const mergedData = Object.values(groupedData);
-      console.log("Fixed grouped data:", mergedData);
-      setItemData(mergedData);
+      setItemData(response.data);
     } catch (err) {
       console.error("CORS Error:", err);
     }
@@ -523,16 +500,12 @@ const App = () => {
     <div className="container mx-auto p-4">
       {itemData.length > 0 ? (
         <div className="flex flex-wrap gap-4">
-          {itemData.map((item, index) => (
-            <GameItemCard
-              key={`${item.code}-${item.upgrade}-${index}`}
-              itemData={item}
-              lang={language}
-            />
+          {itemData.map((item, key) => (
+            <GameItemCard itemData={item} key={key} lang={language} />
           ))}
         </div>
       ) : (
-        <div>{translations[language].loading}</div>
+        <div>{translations[language === "ru" ? "ru" : "en"].loading}</div>
       )}
     </div>
   );
