@@ -198,7 +198,7 @@ const GameItemCard = ({ itemData, lang }) => {
       id: "attack",
       label: translations[lang].attack,
       value: (item) => {
-        const typeCode = item.code.slice(0, 2);
+        const typeCode = item.Code.slice(0, 2);
         if (typeCode === "iw") {
           return getUpgradedValueAndColor(item.GAMinAF, item.GAMaxAF, "attack")
             .value;
@@ -206,7 +206,7 @@ const GameItemCard = ({ itemData, lang }) => {
         return null; // Скрываем атаку для других типов
       },
       color: (item) => {
-        const typeCode = item.code.slice(0, 2);
+        const typeCode = item.Code.slice(0, 2);
         if (typeCode === "iw") {
           return getUpgradedValueAndColor(item.GAMinAF, item.GAMaxAF, "attack")
             .color;
@@ -218,7 +218,7 @@ const GameItemCard = ({ itemData, lang }) => {
       id: "force",
       label: translations[lang].force,
       value: (item) => {
-        const typeCode = item.code.slice(0, 2);
+        const typeCode = item.Code.slice(0, 2);
         if (typeCode === "iw") {
           return getUpgradedValueAndColor(item.MAMinAF, item.MAMaxAF, "force")
             .value;
@@ -226,7 +226,7 @@ const GameItemCard = ({ itemData, lang }) => {
         return null; // Скрываем силу для других типов
       },
       color: (item) => {
-        const typeCode = item.code.slice(0, 2);
+        const typeCode = item.Code.slice(0, 2);
         if (typeCode === "iw") {
           return getUpgradedValueAndColor(item.MAMinAF, item.MAMaxAF, "force")
             .color;
@@ -238,14 +238,14 @@ const GameItemCard = ({ itemData, lang }) => {
       id: "defense",
       label: translations[lang].defense,
       value: (item) => {
-        const typeCode = item.code.slice(0, 2);
+        const typeCode = item.Code.slice(0, 2);
         if (["iu", "il", "ig", "is", "ih", "id"].includes(typeCode)) {
           return getUpgradedSingleValueAndColor(item.DefFc, "defense").value;
         }
         return null;
       },
       color: (item) => {
-        const typeCode = item.code.slice(0, 2);
+        const typeCode = item.Code.slice(0, 2);
         if (["iu", "il", "ig", "is", "ih", "id"].includes(typeCode)) {
           return getUpgradedSingleValueAndColor(item.DefFc, "defense").color;
         }
@@ -328,7 +328,8 @@ const GameItemCard = ({ itemData, lang }) => {
     ? `/assets/${itemData.SpriteFileName}`
     : "/assets/default.webp";
 
-  console.log("Item Code:", itemData.code);
+  console.log("Item Code:", itemData[0].Code);
+  console.log("Item Code2222:", itemData.Code);
 
   const filteredFields = dataFields.filter((field) => {
     try {
