@@ -14,7 +14,7 @@ import Glory_Talic from "./assets/Glory_Talic.png";
 import Grace_Talic from "./assets/Grace_Talic.png";
 import Mercy_Talic from "./assets/Mercy_Talic.png";
 import Empty_Talic from "./assets/Empty_Talic.png";
-import testJson from "./test2.json";
+import testJson from "./test.json";
 const translations = {
   en: {
     loading: "Loading...",
