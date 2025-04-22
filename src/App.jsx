@@ -76,6 +76,7 @@ const getItemType = (code, lang) => {
   return itemTypeMap[typeCode]?.[lang] || "Unknown"; // Возвращаем перевод или "Unknown"
 };
 
+console.log("itemTypeMap", itemTypeMap);
 const ItemDescription = ({ itemData, lang }) => {
   const convertHtml = (text) => {
     text = text.replace(
