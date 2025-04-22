@@ -493,15 +493,18 @@ const App = () => {
       );
       const groupedData = response.data.reduce((acc, item) => {
         const key = `${item.code}-${item.upgrade}`;
-        if (acc[key]) {
-          acc[key].count += item.count;
-        } else {
+        if (!acc[key]) {
           acc[key] = { ...item };
+        } else {
+          acc[key].count += item.count;
         }
         return acc;
       }, {});
 
-      setItemData(Object.values(groupedData));
+      const mergedData = Object.values(groupedData);
+
+      setItemData(mergedData);
+      console.log("Grouped data:", mergedData);
     } catch (err) {
       console.error("CORS Error:", err);
     }
@@ -515,8 +518,12 @@ const App = () => {
     <div className="container mx-auto p-4">
       {itemData.length > 0 ? (
         <div className="flex flex-wrap gap-4">
-          {itemData.map((item, key) => (
-            <GameItemCard itemData={item} key={key} lang={language} />
+          {itemData.map((item, index) => (
+            <GameItemCard
+              itemData={item}
+              key={`${item.code}-${item.upgrade}-${index}`}
+              lang={language}
+            />
           ))}
         </div>
       ) : (
