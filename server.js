@@ -18,7 +18,7 @@ app.use(cors({
 // API Proxy
 app.use('/api', async (req, res) => {
   try {
-    const targetUrl = `https://db.arcanum.rf-platform.online${req.url}`;
+    const targetUrl = `https://item-app-9yyo4.ondigitalocean.app${req.url}`;
     console.log('Proxying request to:', targetUrl);
     
     const response = await axios({
@@ -27,7 +27,7 @@ app.use('/api', async (req, res) => {
       data: req.body,
       headers: {
         ...req.headers,
-        host: 'db.arcanum.rf-platform.online',
+        host: 'item-app-9yyo4.ondigitalocean.app',
         origin: 'https://iconer.rf-platform.online'
       },
       withCredentials: true
