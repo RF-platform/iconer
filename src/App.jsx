@@ -78,7 +78,7 @@ const ItemDescription = ({ itemData, lang }) => {
         {translations[lang].description}
       </span>
       <p
-        className="text-sm  text-[#d1d1d1]"
+        className="text-sm max-w-[350px]  text-[#d1d1d1]"
         dangerouslySetInnerHTML={{ __html: description }}
       />
     </div>
@@ -186,7 +186,7 @@ const GameItemCard = ({ itemData, lang }) => {
 
         // Если тип - оружие (iw), выводим ItemClass из API
         if (typeCode === "iw") {
-          return item.ItemClass || itemTypeMap[typeCode]?.[lang] || "Unknown";
+          return item.ItemClass;
         }
 
         // Для остальных типов используем itemTypeMap
@@ -407,7 +407,7 @@ const GameItemCard = ({ itemData, lang }) => {
       </div>
 
       <div
-        className="absolute left-full top-0 ml-2 w-max min-w-[480px] max-w-[70vw] z-50 origin-left"
+        className="absolute left-full top-0 ml-2 w-max min-w-[430px] max-w-[70vw] z-50 origin-left"
         style={cardStyle}
       >
         <div
