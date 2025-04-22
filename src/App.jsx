@@ -181,8 +181,8 @@ const GameItemCard = ({ itemData, lang }) => {
       id: "type",
       label: translations[lang].type,
       value: (item) => {
-        const typeCode = item.Code.slice(0, 2); // Берем первые две буквы кода
-        return itemTypeMap[typeCode]?.[lang] || "Unknown"; // Возвращаем перевод
+        const typeCode = item.Code.slice(0, 2);
+        return itemTypeMap[typeCode]?.[lang] || "Unknown";
       },
     },
     { id: "Count", label: translations[lang].quantity, value: "Count" },
@@ -203,7 +203,7 @@ const GameItemCard = ({ itemData, lang }) => {
           return getUpgradedValueAndColor(item.GAMinAF, item.GAMaxAF, "attack")
             .value;
         }
-        return null; // Скрываем атаку для других типов
+        return null;
       },
       color: (item) => {
         const typeCode = item.Code.slice(0, 2);
@@ -211,7 +211,7 @@ const GameItemCard = ({ itemData, lang }) => {
           return getUpgradedValueAndColor(item.GAMinAF, item.GAMaxAF, "attack")
             .color;
         }
-        return null; // Скрываем цвет для других типов
+        return null;
       },
     },
     {
@@ -338,7 +338,6 @@ const GameItemCard = ({ itemData, lang }) => {
           ? field.value(itemData)
           : itemData[field.value];
 
-      // Если значение пустое или null, скрываем поле
       if (
         value === undefined ||
         value === null ||
@@ -347,8 +346,7 @@ const GameItemCard = ({ itemData, lang }) => {
         return false;
       }
 
-      // Дополнительная логика для скрытия Count при значении 1
-      if (field.id === "Count" && value === 1) {
+      if ((field.id === "Count" && value === 1) || value === "1") {
         return false;
       }
 
