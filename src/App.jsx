@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Keen_Talic from "./assets/Keen_Talic.webp";
-import Destruction_Talic from "./assets/Destruction_Talic.webp";
-import Darkness_Talic from "./assets/Darkness_Talic.webp";
-import Chaos_Talic from "./assets/Chaos_Talic.webp";
-import Hatred_Talic from "./assets/Hatred_Talic.webp";
-import Favor_Talic from "./assets/Favor_Talic.webp";
-import Wisdom_Talic from "./assets/Wisdom_Talic.webp";
-import SacredFire_Talic from "./assets/SacredFire_Talic.webp";
-import Belief_Talic from "./assets/Belief_Talic.webp";
-import Guard_Talic from "./assets/Guard_Talic.webp";
-import Glory_Talic from "./assets/Glory_Talic.webp";
-import Grace_Talic from "./assets/Grace_Talic.webp";
-import Mercy_Talic from "./assets/Mercy_Talic.webp";
-import Empty_Talic from "./assets/Empty_Talic.webp";
+import Keen_Talic from "./assets/Keen_Talic.png";
+import Destruction_Talic from "./assets/Destruction_Talic.png";
+import Darkness_Talic from "./assets/Darkness_Talic.png";
+import Chaos_Talic from "./assets/Chaos_Talic.png";
+import Hatred_Talic from "./assets/Hatred_Talic.png";
+import Favor_Talic from "./assets/Favor_Talic.png";
+import Wisdom_Talic from "./assets/Wisdom_Talic.png";
+import SacredFire_Talic from "./assets/SacredFire_Talic.png";
+import Belief_Talic from "./assets/Belief_Talic.png";
+import Guard_Talic from "./assets/Guard_Talic.png";
+import Glory_Talic from "./assets/Glory_Talic.png";
+import Grace_Talic from "./assets/Grace_Talic.png";
+import Mercy_Talic from "./assets/Mercy_Talic.png";
+import Empty_Talic from "./assets/Empty_Talic.png";
 import testJson from "./test2.json";
 const translations = {
   en: {
@@ -201,12 +201,12 @@ const GameItemCard = ({ itemData, lang }) => {
         getUpgradedValueAndColor(item.MAMinAF, item.MAMaxAF, "force").color,
     },
     {
-      id: "DefFc",
+      id: "defense",
       label: translations[lang].defense,
       value: (item) =>
-        getUpgradedSingleValueAndColor(item.DefFc, "DefFc").value,
+        getUpgradedSingleValueAndColor(item.DefFc, "defense").value,
       color: (item) =>
-        getUpgradedSingleValueAndColor(item.DefFc, "DefFc").color,
+        getUpgradedSingleValueAndColor(item.DefFc, "defense").color,
     },
     {
       id: "elements",
@@ -255,7 +255,7 @@ const GameItemCard = ({ itemData, lang }) => {
       if (section[i] === "0") zeroCount++;
       else break;
     }
-    const base = type === "DefFc" ? defenseMultipliers : attackMultipliers;
+    const base = type === "defense" ? defenseMultipliers : attackMultipliers;
     return (base[zeroCount] || 0) / 100 + 1;
   };
 
@@ -305,13 +305,13 @@ const GameItemCard = ({ itemData, lang }) => {
       }
 
       if (itemData?.ItemClass === "Torso") {
-        if (field.id === "DefFc") {
+        if (field.id === "defense") {
           return true;
         }
         if (["attack", "force_attack"].includes(field.id)) {
           return false;
         }
-      } else if (field.id === "DefFc") {
+      } else if (field.id === "defense") {
         return false;
       }
 
