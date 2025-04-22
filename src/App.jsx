@@ -34,6 +34,7 @@ const translations = {
     possible: "Possible",
     impossible: "Impossible",
     noData: "No item data found",
+    quantity: "Quantity",
   },
   ru: {
     loading: "Загрузка...",
@@ -53,6 +54,7 @@ const translations = {
     possible: "Возможен",
     impossible: "Невозможен",
     noData: "Данные не найдены",
+    quantity: "Количество",
   },
 };
 
@@ -167,6 +169,7 @@ const GameItemCard = ({ itemData, lang }) => {
 
   const dataFields = [
     { id: "type", label: translations[lang].type, value: "WeaponType" },
+    { id: "quantity", label: translations[lang].quantity, value: "Quantity" },
     { id: "level", label: translations[lang].requiredLevel, value: "LevelLim" },
     { id: "race", label: translations[lang].race, value: "Civil" },
     {
