@@ -15,7 +15,6 @@ import Grace_Talic from "./assets/Grace_Talic.png";
 import Mercy_Talic from "./assets/Mercy_Talic.png";
 import Empty_Talic from "./assets/Empty_Talic.png";
 import testJson from "./test.json";
-
 const translations = {
   en: {
     loading: "Loading...",
@@ -57,7 +56,7 @@ const translations = {
   },
 };
 
-const ItemDescription = ({ itemData }) => {
+const ItemDescription = ({ itemData, lang }) => {
   const convertHtml = (text) => {
     text = text.replace(
       /<#([a-fA-F0-9]{3,6})\s([^>]+)>/g,
@@ -71,7 +70,9 @@ const ItemDescription = ({ itemData }) => {
 
   return (
     <div className="mt-4">
-      <span className="text-sm text-sky-200">[Description]</span>
+      <span className="text-sm text-sky-200">
+        [{translations[lang].description}]
+      </span>
       <p
         className="text-sm max-w-[270px] text-[#C0C2C4]"
         dangerouslySetInnerHTML={{ __html: description }}
