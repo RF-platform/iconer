@@ -538,7 +538,7 @@ const GameItemCard = ({ itemData, lang }) => {
 
 const App = () => {
   const [itemData, setItemData] = useState([]);
-  const [language, setLanguage] = useState("en");
+  const [language, setLanguage] = useState("ru");
   const fetchItemData = async () => {
     try {
       const response = await axios.post(
