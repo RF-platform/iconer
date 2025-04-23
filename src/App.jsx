@@ -185,7 +185,7 @@ const GameItemCard = ({ itemData, lang }) => {
         const typeCode = item.Code.slice(0, 2);
         console.log("typeeeeeeee", typeCode);
         return typeCode === "iw"
-          ? item.ItemClass
+          ? item.WeaponType
           : itemTypeMap[typeCode]?.[lang];
       },
     },
