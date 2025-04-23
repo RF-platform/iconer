@@ -182,15 +182,11 @@ const GameItemCard = ({ itemData, lang }) => {
       id: "type",
       label: translations[lang].type,
       value: (item) => {
-        const typeCode = item.Code.slice(0, 2); // Берем первые две буквы кода
-
-        // Если тип - оружие (iw), выводим ItemClass из API
-        if (typeCode === "iw") {
-          return item.ItemClass;
-        }
-
-        // Для остальных типов используем itemTypeMap
-        return itemTypeMap[typeCode]?.[lang] || "Unknown";
+        const typeCode = item.Code.slice(0, 2);
+        console.log("typeeeeeeee", typeCode);
+        return typeCode === "iw"
+          ? item.ItemClass
+          : itemTypeMap[typeCode]?.[lang];
       },
     },
     { id: "Count", label: translations[lang].quantity, value: "Count" },
@@ -288,7 +284,6 @@ const GameItemCard = ({ itemData, lang }) => {
   }
 
   function getUpgradedValueAndColor(min, max, type) {
-    console.log("getUpgradedValueAndColor:", { min, max, type });
     if (min == null || max == null) {
       return { value: null, color: null };
     }
@@ -309,7 +304,6 @@ const GameItemCard = ({ itemData, lang }) => {
   }
 
   function getUpgradedSingleValueAndColor(value, type) {
-    console.log("getUpgradedSingleValueAndColor:", { value, type });
     if (value == null || value === 0) return { value: null, color: null };
     const multiplier = getUpgradeMultiplier(currentUpgrade, type);
     const upgraded = Math.floor(value * multiplier);
@@ -328,16 +322,12 @@ const GameItemCard = ({ itemData, lang }) => {
       else break;
     }
     const base = type === "defense" ? defenseMultipliers : attackMultipliers;
-    console.log("getUpgradeMultiplier:", { code, type, zeroCount });
     return (base[zeroCount] || 0) / 100 + 1;
   };
 
   const spriteImage = itemData.SpriteFileName
     ? `/assets/${itemData.SpriteFileName}`
     : "/assets/default.webp";
-
-  console.log("Item Code:", itemData[0]);
-  console.log("Item Code2222:", itemData);
 
   const filteredFields = dataFields.filter((field) => {
     try {
@@ -380,7 +370,7 @@ const GameItemCard = ({ itemData, lang }) => {
       />
     );
   }
-  console.log("spriteImageeee", spriteImage);
+
   return (
     <div
       className="relative inline-block"
@@ -557,7 +547,6 @@ const App = () => {
     fetchItemData();
   }, [language]);
 
-  console.log("itemData", itemData);
   return (
     <div className="container mx-auto p-4">
       {itemData.length > 0 ? (
