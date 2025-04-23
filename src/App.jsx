@@ -537,7 +537,7 @@ const App = () => {
           },
         }
       );
-      setItemData(response.data);
+      setItemData(response?.data || []);
     } catch (err) {
       console.error("CORS Error:", err);
     }
