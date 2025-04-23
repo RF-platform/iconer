@@ -1,17 +1,17 @@
-import Keen_Talic from "../public/assets/Keen_Talic.webp";
-import Destruction_Talic from "../public/assets/Destruction_Talic.webp";
-import Darkness_Talic from "../public/assets/Darkness_Talic.webp";
-import Chaos_Talic from "../public/assets/Chaos_Talic.webp";
-import Hatred_Talic from "../public/assets/Hatred_Talic.webp";
-import Favor_Talic from "../public/assets/Favor_Talic.webp";
-import Wisdom_Talic from "../public/assets/Wisdom_Talic.webp";
-import SacredFire_Talic from "../public/assets/SacredFire_Talic.webp";
-import Belief_Talic from "../public/assets/Belief_Talic.webp";
-import Guard_Talic from "../public/assets/Guard_Talic.webp";
-import Glory_Talic from "../public/assets/Glory_Talic.webp";
-import Grace_Talic from "../public/assets/Grace_Talic.webp";
-import Mercy_Talic from "../public/assets/Mercy_Talic.webp";
-import Empty_Talic from "../public/assets/Empty_Talic.webp";
+import Keen_Talic from "./assets/Keen_Talic.webp";
+import Destruction_Talic from "./assets/Destruction_Talic.webp";
+import Darkness_Talic from "./assets/Darkness_Talic.webp";
+import Chaos_Talic from "./assets/Chaos_Talic.webp";
+import Hatred_Talic from "./assets/Hatred_Talic.webp";
+import Favor_Talic from "./assets/Favor_Talic.webp";
+import Wisdom_Talic from "./assets/Wisdom_Talic.webp";
+import SacredFire_Talic from "./assets/SacredFire_Talic.webp";
+import Belief_Talic from "./assets/Belief_Talic.webp";
+import Guard_Talic from "./assets/Guard_Talic.webp";
+import Glory_Talic from "./assets/Glory_Talic.webp";
+import Grace_Talic from "./assets/Grace_Talic.webp";
+import Mercy_Talic from "./assets/Mercy_Talic.webp";
+import Empty_Talic from "./assets/Empty_Talic.webp";
 
 export const translations = {
   en: {
