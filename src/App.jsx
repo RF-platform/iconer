@@ -36,6 +36,10 @@ const translations = {
     noData: "No item data found",
     quantity: "Quantity",
     typeWeapon: "Weapon",
+    fire: "Fire",
+    water: "Water",
+    soil: "Soil",
+    wind: "Wind",
   },
   ru: {
     loading: "Загрузка...",
@@ -57,6 +61,10 @@ const translations = {
     noData: "Данные не найдены",
     quantity: "Количество",
     typeWeapon: "Оружие",
+    fire: "Огонь",
+    water: "Вода",
+    soil: "Земля",
+    wind: "Ветер",
   },
 };
 
@@ -263,10 +271,14 @@ const GameItemCard = ({ itemData, lang }) => {
       label: translations[lang].elements,
       value: (item) => {
         const elems = [];
-        if (item.FireTol > 0) elems.push(`Fire ${item.FireTol}`);
-        if (item.WaterTol > 0) elems.push(`Water ${item.WaterTol}`);
-        if (item.SoilTol > 0) elems.push(`Soil ${item.SoilTol}`);
-        if (item.WindTol > 0) elems.push(`Wind ${item.WindTol}`);
+        if (item.FireTol > 0)
+          elems.push(`${translations[lang].fire} ${item.FireTol}`);
+        if (item.WaterTol > 0)
+          elems.push(`${translations[lang].water} ${item.WaterTol}`);
+        if (item.SoilTol > 0)
+          elems.push(`${translations[lang].soil} ${item.SoilTol}`);
+        if (item.WindTol > 0)
+          elems.push(`${translations[lang].wind} ${item.WindTol}`);
         return elems.length ? elems.join(", ") : null;
       },
     },
