@@ -137,7 +137,9 @@ const GameItemCard = ({ itemData, lang }) => {
     F: Empty_Talic,
   };
 
-  const [currentUpgrade, setCurrentUpgrade] = useState("700000ff");
+  const upgradeEntry = testJson.find((entry) => entry.code === itemData.Code);
+  const currentUpgrade = upgradeEntry?.upgrade || "00000000";
+
   const getItemColors = (grade) => {
     switch (grade) {
       case 0:
