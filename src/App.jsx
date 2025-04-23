@@ -530,7 +530,7 @@ const App = () => {
   const fetchItemData = async () => {
     try {
       const response = await axios.post(
-        `https://item-app-9yyo4.ondigitalocean.app/api/items?lang=${language}`,
+        `https://db.arcanum.rf-platform.online/api/items?lang=${language}`,
         { list: testJson },
         {
           headers: {
