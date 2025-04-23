@@ -138,7 +138,7 @@ const GameItemCard = ({ itemData, lang }) => {
   };
 
   const upgradeEntry = testJson.find((entry) => entry.code === itemData.Code);
-  const currentUpgrade = upgradeEntry?.upgrade || "00000000";
+  const currentUpgrade = upgradeEntry?.upgrade || "70000000";
 
   const getItemColors = (grade) => {
     switch (grade) {
