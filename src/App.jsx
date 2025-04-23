@@ -48,7 +48,7 @@ const translations = {
     force: "Силовая аттака",
     defense: "Показатель защиты",
     elements: "Стихия",
-    cast: "Эффект",
+    cast: "Магия",
     specialEffects: "Особые эффекты",
     upgrade: "Улучшения",
     trade: "Обмен",
@@ -526,7 +526,7 @@ const GameItemCard = ({ itemData, lang }) => {
 
 const App = () => {
   const [itemData, setItemData] = useState([]);
-  const [language, setLanguage] = useState("ru");
+  const [language, setLanguage] = useState("en");
   const fetchItemData = async () => {
     try {
       const response = await axios.post(
