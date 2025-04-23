@@ -1,17 +1,17 @@
 [
   {
-    "code": "irere01",
-    "count": "44",
+    "code": "ikbtc31",
+    "count": "1",
     "upgrade": "7fffffff"
   },
   {
-    "code": "irebu01",
-    "count": "27",
+    "code": "ikbtc31",
+    "count": "1",
     "upgrade": "7fffffff"
   },
   {
-    "code": "iregr01",
-    "count": "5",
+    "code": "ikbgl01",
+    "count": "1",
     "upgrade": "7fffffff"
   },
   {
@@ -110,37 +110,37 @@
     "upgrade": "7fffffff"
   },
   {
-    "code": "iwbza00",
+    "code": "iibnb01",
     "count": "1",
     "upgrade": "700000ff"
   },
   {
-    "code": "iwfza00",
+    "code": "iibnc01",
     "count": "1",
     "upgrade": "700000ff"
   },
   {
-    "code": "iwdza00",
+    "code": "iibnd01",
     "count": "1",
     "upgrade": "7000000f"
   },
   {
-    "code": "iwtza00",
+    "code": "iibne01",
     "count": "1",
     "upgrade": "700fffff"
   },
   {
-    "code": "iwlza00",
+    "code": "iabnb11",
     "count": "1",
     "upgrade": "7fffffff"
   },
   {
-    "code": "iwaza00",
+    "code": "iabnc11",
     "count": "1",
     "upgrade": "7fffffff"
   },
   {
-    "code": "iwgza00",
+    "code": "iabnd11",
     "count": "1",
     "upgrade": "7fffffff"
   },
