@@ -86,7 +86,6 @@ const GameItemCard = ({ itemData, lang }) => {
       label: translations[lang].type,
       value: (item) => {
         const typeCode = item.Code.slice(0, 2);
-        console.log("typeeeeeeee", typeCode);
         return typeCode === "iw"
           ? item.WeaponType
           : itemTypeMap[typeCode]?.[lang];
