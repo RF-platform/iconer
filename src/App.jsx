@@ -213,10 +213,20 @@ const GameItemCard = ({ itemData, lang }) => {
   }
 
   function getUpgradedSingleValueAndColor(value, type) {
-    if (value == null || value === 0) return { value: null, color: null };
+    if (value === 0) {
+      return {
+        value: "0",
+        color: "text-[#d1d1d1]",
+      };
+    }
+
+    // Стандартная логика для ненулевых значений
+    if (value == null) return { value: null, color: null };
+
     const multiplier = getUpgradeMultiplier(currentUpgrade, type);
-    const upgraded = Math.floor(value * multiplier);
+    const upgraded = Math.floor(value * (1 + multiplier));
     const changed = upgraded !== value;
+
     return {
       value: upgraded,
       color: changed ? "text-[#00ff00]" : "text-[#d1d1d1]",
