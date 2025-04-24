@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Empty_Talic from "../public/assets/Empty_Talic.webp";
+import Empty_Talic from "/public/assets/Empty_Talic.webp";
 import {
   translations,
   itemTypeMap,
