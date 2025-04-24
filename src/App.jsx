@@ -220,7 +220,6 @@ const GameItemCard = ({ itemData, lang }) => {
       };
     }
 
-    // Стандартная логика для ненулевых значений
     if (value == null) return { value: null, color: null };
 
     const multiplier = getUpgradeMultiplier(currentUpgrade, type);
