@@ -183,7 +183,6 @@ const GameItemCard = ({ itemData, lang }) => {
     const [min, max] = value.split(" - ").map(Number);
     if (isNaN(min) || isNaN(max)) return value;
 
-    // Добавляем базовое значение
     const newMin = Math.floor(min + min * multiplier);
     const newMax = Math.floor(max + max * multiplier);
 
@@ -191,20 +190,25 @@ const GameItemCard = ({ itemData, lang }) => {
   }
 
   function getUpgradedValueAndColor(min, max, type) {
-    if (min == null || max == null) return { value: null, color: null };
+    if (min == null || max == null) {
+      return { value: null, color: null };
+    }
 
-    // Используем оригинальные значения из API
-    const baseValue = `${min} - ${max}`;
+    if (min === 0 && max === 0) {
+      return {
+        value: "0 - 0",
+        color: "text-[#d1d1d1]",
+      };
+    }
+
+    const base = `${min} - ${max}`;
     const multiplier = getUpgradeMultiplier(currentUpgrade, type);
-
-    console.log("Base values:", min, max, "Multiplier:", multiplier);
-
-    const upgraded =
-      multiplier === 0 ? baseValue : applyMultiplier(baseValue, multiplier);
+    const upgraded = applyMultiplier(base, multiplier);
+    const changed = upgraded !== base;
 
     return {
       value: upgraded,
-      color: multiplier !== 0 ? "text-[#00ff00]" : "text-[#d1d1d1]",
+      color: changed ? "text-[#00ff00]" : "text-[#d1d1d1]",
     };
   }
 
@@ -220,10 +224,9 @@ const GameItemCard = ({ itemData, lang }) => {
   }
 
   function getUpgradeMultiplier(code, type) {
-    const fullCode = code.padEnd(8, "f").toLowerCase(); // Приводим к нижнему регистру
+    const fullCode = code.padEnd(8, "f").toLowerCase();
     let zeroCount = 0;
 
-    // Считаем только последовательные нули после первого символа
     for (let i = 1; i < fullCode.length; i++) {
       if (fullCode[i] !== "0") break;
       zeroCount++;
@@ -241,10 +244,9 @@ const GameItemCard = ({ itemData, lang }) => {
       multiplier
     );
 
-    return multiplier; // Возвращаем только множитель, без +1
+    return multiplier;
   }
 
-  // В компоненте GameItemCard:
   const upgradeEntry = testJson.find(
     (entry) => entry.code.toLowerCase() === itemData.Code.toLowerCase()
   );
@@ -316,7 +318,7 @@ const GameItemCard = ({ itemData, lang }) => {
       >
         {itemData.Count > 1 && (
           <div
-            className="absolute -bottom-1 left-1 text-[#d1d1d1] text-lg font-bold"
+            className="absolute -bottom-1 left-1 text-[#d1d1d1] text-xl font-bold"
             style={{
               WebkitTextStroke: "1px black",
               color: "#d1d1d1",
