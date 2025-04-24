@@ -219,28 +219,38 @@ const GameItemCard = ({ itemData, lang }) => {
   }
 
   function getUpgradeMultiplier(code, type) {
-    const fullCode = code.padEnd(8, "0"); // Дополняем до 8 символов, если нужно
+    const fullCode = code.padEnd(8, "f"); // Заполняем 'f' вместо нулей
     let zeroCount = 0;
 
-    // Считаем последовательные нули начиная со второго символа
     for (let i = 1; i < fullCode.length; i++) {
       if (fullCode[i] === "0") {
         zeroCount++;
       } else {
-        break; // Прерываем при первом ненулевом символе
+        break;
       }
     }
 
     const base = type === "defense" ? defenseMultipliers : attackMultipliers;
     const multiplier = (base[zeroCount] || 0) / 100;
-    return 1 + multiplier; // Возвращаем множитель типа 1 + 0.25 для 25%
+
+    // Отладочный вывод
+    console.log(
+      "Upgrade:",
+      fullCode,
+      "Zeros:",
+      zeroCount,
+      "Multiplier:",
+      multiplier
+    );
+
+    return 1 + multiplier;
   }
 
-  // В компоненте GameItemCard исправляем получение currentUpgrade
+  // В компоненте GameItemCard:
   const upgradeEntry = testJson.find(
     (entry) => entry.code.toLowerCase() === itemData.Code.toLowerCase()
   );
-  const currentUpgrade = upgradeEntry?.upgrade?.padEnd(8, "0") || "70000000";
+  const currentUpgrade = upgradeEntry?.upgrade?.padEnd(8, "f") || "7fffffff"; // Заполняем 'f'
 
   const spriteImage = itemData.SpriteFileName
     ? `/assets/${itemData.SpriteFileName}`
@@ -301,9 +311,9 @@ const GameItemCard = ({ itemData, lang }) => {
       >
         {itemData.Count > 1 && (
           <div
-            className="absolute -bottom-1 left-1 text-[#d1d1d1] text-base font-bold"
+            className="absolute -bottom-1 left-1 text-[#d1d1d1] text-lg font-bold"
             style={{
-              WebkitTextStroke: "1px black",
+              WebkitTextStroke: "2px black",
               color: "#d1d1d1",
             }}
           >
