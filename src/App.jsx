@@ -39,7 +39,7 @@ const GameItemCard = ({ itemData, lang }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const upgradeEntry = testJson.find((entry) => entry.code === itemData.Code);
-  const currentUpgrade = upgradeEntry?.upgrade || "70000000";
+  const currentUpgrade = upgradeEntry?.upgrade;
 
   const getItemColors = (grade) => {
     switch (grade) {
