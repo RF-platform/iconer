@@ -67,6 +67,7 @@ export const translations = {
 };
 
 export const attackMultipliers = {
+  0: 0,
   1: 25,
   2: 50,
   3: 75,
@@ -77,6 +78,7 @@ export const attackMultipliers = {
 };
 
 export const defenseMultipliers = {
+  0: 0,
   1: 10,
   2: 20,
   3: 30,

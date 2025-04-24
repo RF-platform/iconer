@@ -39,7 +39,7 @@ const GameItemCard = ({ itemData, lang }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const upgradeEntry = testJson.find((entry) => entry.code === itemData.Code);
-  const currentUpgrade = upgradeEntry?.upgrade;
+  const currentUpgrade = upgradeEntry?.upgrade || "70000000";
 
   const getItemColors = (grade) => {
     switch (grade) {
@@ -221,14 +221,21 @@ const GameItemCard = ({ itemData, lang }) => {
   }
 
   const getUpgradeMultiplier = (code, type) => {
-    const section = code.slice(0, 8);
+    const section = code.slice(0, 8); // Берем первые 8 символов
     let zeroCount = 0;
+
+    // Считаем нули, начиная со второго символа
     for (let i = 1; i < section.length; i++) {
-      if (section[i] === "f") zeroCount++;
-      else break;
+      if (section[i] === "0") zeroCount++;
+      else break; // Прекращаем подсчет при первом не-нуле
     }
+
+    // Ограничиваем максимальное количество нулей (до 7)
+    zeroCount = Math.min(zeroCount, 7);
+
     const base = type === "defense" ? defenseMultipliers : attackMultipliers;
-    return (base[zeroCount] || 0) / 100 + 1;
+    const multiplier = base[zeroCount] || 0; // Используем 0, если ключ не найден
+    return multiplier / 100 + 1;
   };
 
   const spriteImage = itemData.SpriteFileName
