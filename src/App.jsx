@@ -179,37 +179,32 @@ const GameItemCard = ({ itemData, lang }) => {
     return <div className="text-black">No item data found</div>;
   }
 
-  // 1. Добавляем отладочный вывод в функции applyMultiplier
   function applyMultiplier(value, multiplier) {
-    console.log("Input value:", value, "Multiplier:", multiplier); // Логируем входные данные
     const [min, max] = value.split(" - ").map(Number);
     if (isNaN(min) || isNaN(max)) return value;
 
-    const result = `${Math.floor(min * (1 + multiplier))} - ${Math.floor(
-      max * (1 + multiplier)
-    )}`;
+    // Добавляем базовое значение
+    const newMin = Math.floor(min + min * multiplier);
+    const newMax = Math.floor(max + max * multiplier);
 
-    console.log("Calculated result:", result); // Логируем результат вычислений
-    return result;
+    return `${newMin} - ${newMax}`;
   }
 
   function getUpgradedValueAndColor(min, max, type) {
-    if (min == null || max == null) {
-      return { value: null, color: null };
-    }
-    const base = `${itemData.GAMinAF} - ${itemData.GAMaxAF}`;
+    if (min == null || max == null) return { value: null, color: null };
+
+    // Используем оригинальные значения из API
+    const baseValue = `${min} - ${max}`;
     const multiplier = getUpgradeMultiplier(currentUpgrade, type);
-    const upgraded = applyMultiplier(base, multiplier);
-    const changed = upgraded !== base;
-    if (min === 0 && max === 0) {
-      return {
-        value: base,
-        color: "text-[#d1d1d1]",
-      };
-    }
+
+    console.log("Base values:", min, max, "Multiplier:", multiplier);
+
+    const upgraded =
+      multiplier === 0 ? baseValue : applyMultiplier(baseValue, multiplier);
+
     return {
       value: upgraded,
-      color: changed ? "text-[#00ff00]" : "text-[#d1d1d1]",
+      color: multiplier !== 0 ? "text-[#00ff00]" : "text-[#d1d1d1]",
     };
   }
 
@@ -225,31 +220,28 @@ const GameItemCard = ({ itemData, lang }) => {
   }
 
   function getUpgradeMultiplier(code, type) {
-    const fullCode = code.padEnd(8, "f"); // Заполняем 'f' вместо нулей
+    const fullCode = code.padEnd(8, "f").toLowerCase(); // Приводим к нижнему регистру
     let zeroCount = 0;
 
+    // Считаем только последовательные нули после первого символа
     for (let i = 1; i < fullCode.length; i++) {
-      if (fullCode[i] === "0") {
-        zeroCount++;
-      } else {
-        break;
-      }
+      if (fullCode[i] !== "0") break;
+      zeroCount++;
     }
 
     const base = type === "defense" ? defenseMultipliers : attackMultipliers;
     const multiplier = (base[zeroCount] || 0) / 100;
 
-    // Отладочный вывод
     console.log(
-      "Upgrade:",
+      "Upgrade code:",
       fullCode,
-      "Zeros:",
+      "Zero count:",
       zeroCount,
       "Multiplier:",
       multiplier
     );
 
-    return 1 + multiplier;
+    return multiplier; // Возвращаем только множитель, без +1
   }
 
   // В компоненте GameItemCard:
