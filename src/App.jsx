@@ -179,19 +179,25 @@ const GameItemCard = ({ itemData, lang }) => {
     return <div className="text-black">No item data found</div>;
   }
 
+  // 1. Добавляем отладочный вывод в функции applyMultiplier
   function applyMultiplier(value, multiplier) {
+    console.log("Input value:", value, "Multiplier:", multiplier); // Логируем входные данные
     const [min, max] = value.split(" - ").map(Number);
     if (isNaN(min) || isNaN(max)) return value;
-    return `${Math.floor(min * (1 + multiplier))} - ${Math.floor(
+
+    const result = `${Math.floor(min * (1 + multiplier))} - ${Math.floor(
       max * (1 + multiplier)
     )}`;
+
+    console.log("Calculated result:", result); // Логируем результат вычислений
+    return result;
   }
 
   function getUpgradedValueAndColor(min, max, type) {
     if (min == null || max == null) {
       return { value: null, color: null };
     }
-    const base = `${min} - ${max}`;
+    const base = `${itemData.GAMinAF} - ${itemData.GAMaxAF}`;
     const multiplier = getUpgradeMultiplier(currentUpgrade, type);
     const upgraded = applyMultiplier(base, multiplier);
     const changed = upgraded !== base;
@@ -282,6 +288,13 @@ const GameItemCard = ({ itemData, lang }) => {
     }
   });
 
+  console.log("API Data:", {
+    GAMinAF: itemData.GAMinAF,
+    GAMaxAF: itemData.GAMaxAF,
+    currentUpgrade,
+    upgradeEntry,
+  });
+
   const cardStyle = {
     opacity: isHovered ? 1 : 0,
     transform: `scale(${isHovered ? 1 : 0.8})`,
@@ -313,7 +326,7 @@ const GameItemCard = ({ itemData, lang }) => {
           <div
             className="absolute -bottom-1 left-1 text-[#d1d1d1] text-lg font-bold"
             style={{
-              WebkitTextStroke: "2px black",
+              WebkitTextStroke: "1px black",
               color: "#d1d1d1",
             }}
           >
