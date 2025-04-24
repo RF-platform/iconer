@@ -38,9 +38,7 @@ const ItemDescription = ({ itemData, lang }) => {
 const GameItemCard = ({ itemData, lang }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  const upgradeEntry = testJson.find((entry) => entry.code === itemData.Code);
-  const currentUpgrade = upgradeEntry?.upgrade || "70000000";
-
+  console.log("build");
   const getItemColors = (grade) => {
     switch (grade) {
       case 0:
@@ -220,23 +218,29 @@ const GameItemCard = ({ itemData, lang }) => {
     };
   }
 
-  const getUpgradeMultiplier = (code, type) => {
-    const section = code.slice(0, 8); // Берем первые 8 символов
+  function getUpgradeMultiplier(code, type) {
+    const fullCode = code.padEnd(8, "0"); // Дополняем до 8 символов, если нужно
     let zeroCount = 0;
 
-    // Считаем нули, начиная со второго символа
-    for (let i = 1; i < section.length; i++) {
-      if (section[i] === "0") zeroCount++;
-      else break; // Прекращаем подсчет при первом не-нуле
+    // Считаем последовательные нули начиная со второго символа
+    for (let i = 1; i < fullCode.length; i++) {
+      if (fullCode[i] === "0") {
+        zeroCount++;
+      } else {
+        break; // Прерываем при первом ненулевом символе
+      }
     }
 
-    // Ограничиваем максимальное количество нулей (до 7)
-    zeroCount = Math.min(zeroCount, 7);
-
     const base = type === "defense" ? defenseMultipliers : attackMultipliers;
-    const multiplier = base[zeroCount] || 0; // Используем 0, если ключ не найден
-    return multiplier / 100 + 1;
-  };
+    const multiplier = (base[zeroCount] || 0) / 100;
+    return 1 + multiplier; // Возвращаем множитель типа 1 + 0.25 для 25%
+  }
+
+  // В компоненте GameItemCard исправляем получение currentUpgrade
+  const upgradeEntry = testJson.find(
+    (entry) => entry.code.toLowerCase() === itemData.Code.toLowerCase()
+  );
+  const currentUpgrade = upgradeEntry?.upgrade?.padEnd(8, "0") || "70000000";
 
   const spriteImage = itemData.SpriteFileName
     ? `/assets/${itemData.SpriteFileName}`
