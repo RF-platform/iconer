@@ -224,7 +224,7 @@ const GameItemCard = ({ itemData, lang }) => {
     const section = code.slice(0, 8);
     let zeroCount = 0;
     for (let i = 1; i < section.length; i++) {
-      if (section[i] === "0") zeroCount++;
+      if (section[i] === "f") zeroCount++;
       else break;
     }
     const base = type === "defense" ? defenseMultipliers : attackMultipliers;
