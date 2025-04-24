@@ -38,7 +38,7 @@ const ItemDescription = ({ itemData, lang }) => {
 const GameItemCard = ({ itemData, lang }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  console.log("build");
+  console.log("build2");
   const getItemColors = (grade) => {
     switch (grade) {
       case 0:
@@ -300,7 +300,13 @@ const GameItemCard = ({ itemData, lang }) => {
         }`}
       >
         {itemData.Count > 1 && (
-          <div className="absolute -bottom-1 left-1 text-[#d1d1d1] text-base font-bold text-shadow">
+          <div
+            className="absolute -bottom-1 left-1 text-[#d1d1d1] text-base font-bold"
+            style={{
+              WebkitTextStroke: "1px black",
+              color: "#d1d1d1",
+            }}
+          >
             {itemData.Count}
           </div>
         )}
