@@ -1,0 +1,71 @@
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+
+// Initialize i18n
+i18n.use(initReactI18next).init({
+  resources: {
+    en: {
+      translation: {
+        loading: "Loading...",
+        description: "Description",
+        type: "Type",
+        quantity: "Quantity",
+        requiredLevel: "Required Level",
+        race: "Race",
+        requiredSkill: "Required Skill",
+        attack: "Attack",
+        force: "Force",
+        defense: "Defense",
+        elements: "Elements",
+        cast: "Cast",
+        specialEffects: "Special Effects",
+        upgrade: "Upgrade",
+        trade: "Trade",
+        possible: "Possible",
+        impossible: "Impossible",
+        fire: "Fire",
+        water: "Water",
+        soil: "Soil",
+        wind: "Wind",
+        itemClass: "Class",
+        pageTitle: "Arcanum Items",
+        itemsFromApi: "Items from API (full objects)",
+        itemsById: "Items by ID (simplified objects)",
+      },
+    },
+    ru: {
+      translation: {
+        loading: "Загрузка...",
+        description: "Описание",
+        type: "Класс",
+        quantity: "Количество",
+        requiredLevel: "Требуемый уровень",
+        race: "Раса",
+        requiredSkill: "Требуемый навык",
+        attack: "Атака",
+        force: "Сила",
+        defense: "Защита",
+        elements: "Элементы",
+        cast: "Каст",
+        specialEffects: "Особые эффекты",
+        upgrade: "Улучшение",
+        trade: "Торговля",
+        possible: "Возможна",
+        impossible: "Невозможна",
+        fire: "Огонь",
+        water: "Вода",
+        soil: "Земля",
+        wind: "Ветер",
+        itemClass: "Класс",
+        pageTitle: "Предметы Аркануум",
+        itemsFromApi: "Предметы из API (полные объекты)",
+        itemsById: "Предметы через ID (упрощенные объекты)",
+      },
+    },
+  },
+  lng: "en",
+  fallbackLng: "en",
+  interpolation: { escapeValue: false },
+});
+
+export default i18n;
